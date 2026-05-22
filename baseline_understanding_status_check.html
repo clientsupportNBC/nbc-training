@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baseline Understanding Status Check</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1F4E78 0%, #2E75B6 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .question-container {
+            margin-bottom: 50px;
+            display: none;
+        }
+        
+        .question-container.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .question-number {
+            color: #2E75B6;
+            font-weight: bold;
+            font-size: 12px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        
+        .question-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .scenario-box {
+            background: #f5f7fa;
+            border-left: 4px solid #2E75B6;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .input-group {
+            margin-bottom: 25px;
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 14px;
+            resize: vertical;
+            min-height: 120px;
+            transition: border-color 0.2s;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: #2E75B6;
+        }
+        
+        .label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        
+        button {
+            padding: 12px 24px;
+            font-size: 14px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        
+        .btn-next {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            flex: 1;
+        }
+        
+        .btn-next:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-next:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .btn-back {
+            background: #e0e0e0;
+            color: #333;
+            flex: 0 1 100px;
+        }
+        
+        .btn-back:hover {
+            background: #d0d0d0;
+        }
+        
+        .btn-submit {
+            background: linear-gradient(135deg, #11a76d 0%, #0d7d56 100%);
+            color: white;
+            flex: 1;
+            font-size: 16px;
+        }
+        
+        .btn-submit:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(17, 167, 109, 0.3);
+        }
+        
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .progress-bar {
+            height: 4px;
+            background: #e0e0e0;
+            position: relative;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+        
+        .intro-section {
+            text-align: center;
+            padding: 20px 0;
+        }
+        
+        .intro-section h2 {
+            color: #1F4E78;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .intro-section p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+        
+        .start-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            font-size: 16px;
+            margin-top: 30px;
+        }
+        
+        .completion-message {
+            text-align: center;
+            padding: 40px;
+            display: none;
+        }
+        
+        .completion-message.show {
+            display: block;
+        }
+        
+        .completion-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .completion-message h2 {
+            color: #1F4E78;
+            margin-bottom: 15px;
+        }
+        
+        .completion-message p {
+            color: #666;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .error-message {
+            background: #fee;
+            color: #c33;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .name-input {
+            margin-bottom: 25px;
+        }
+
+        .name-input input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        .name-input input:focus {
+            outline: none;
+            border-color: #2E75B6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        
+        <div class="header">
+            <h1>Nation's Best CPR</h1>
+            <p>Baseline Understanding Status Check</p>
+        </div>
+        
+        <div class="content">
+            <div id="errorMessage" class="error-message"></div>
+
+            <!-- INTRO -->
+            <div id="intro" class="question-container active">
+                <div class="intro-section">
+                    <h2>Quick Status Check</h2>
+                    <p>Before we start training week, I want to understand where you are right now with how you think about customer service.</p>
+                    <p>I'm going to give you 5 real situations. For each one, tell me what you'd do and why.</p>
+                    <p><strong>This isn't a test.</strong> There's no passing or failing. I'm just checking your baseline—what do you already understand about our policies and our philosophy? What do you need help with?</p>
+                    <p>Be honest. Your answers help me know where to focus the training.</p>
+                    <p style="color: #999; margin-top: 20px; font-size: 14px;">Takes about 20-30 minutes.</p>
+                    <button class="btn-next start-button" onclick="startAssessment()">Start Status Check</button>
+                </div>
+            </div>
+
+            <!-- NAME COLLECTION -->
+            <div id="nameCollect" class="question-container">
+                <div class="intro-section">
+                    <h2>First, who are you?</h2>
+                    <p>Just so Michelle knows whose responses these are.</p>
+                    <div class="name-input">
+                        <input type="text" id="vaName" placeholder="Your name" autocomplete="off">
+                    </div>
+                    <button class="btn-next start-button" onclick="collectName()">Continue to Scenarios</button>
+                </div>
+            </div>
+            
+            <!-- QUESTION 1 -->
+            <div id="q1" class="question-container">
+                <div class="question-number">Scenario 1 of 5</div>
+                <div class="question-text">Student No-Shows and Pushes Back</div>
+                <div class="scenario-box">
+                    Subject: I missed my class and I want my money back<br><br>
+                    "Hi, I had the Adult CPR class scheduled for Saturday at 2pm. I couldn't make it because I had a family emergency. I still need my certification for work, but I also can't afford to pay again. Can you just refund me since it was an emergency?"
+                </div>
+                
+                <div class="input-group">
+                    <label class="label">What's your first action? (Not your email response—your first actual action)</label>
+                    <textarea id="q1_action"></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label class="label">Why is that your first action?</label>
+                    <textarea id="q1_why_action"></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label class="label">What would you say to them?</label>
+                    <textarea id="q1_response"></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label class="label">What result are you trying to get?</label>
+                    <textarea id="q1_outcome"></textarea>
+                </div>
+                
+                <div class="button-group">
+                    <button class="btn-next" onclick="nextQuestion(1)">Next Scenario</button>
+                </div>
+            </div>
+            
+            <!-- QUESTION 2 -->
+            <div id="q2" class="question-container">
+                <div class="question-number">Scenario 2 of 5</div>
+                <div class="question-text">Last-Minute Transfer Request</div>
+                <div class="scenario-box">
+                    "Hi! I have a class scheduled for tomorrow at 10am, but I just found out I have a work emergency. Can I move to the Thursday 6pm class instead? I shouldn't have to pay anything since I'm staying a student."
+                </div>
+                
+                <div class="input-group">
+                    <label class="label">What's the policy and what do you tell them?</label>
+                    <textarea id="q2_policy_response"></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label class="label">Why do we have this transfer fee policy?</label>
+                    <textarea id="q2_why_policy"></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label class="label">If they push back, how do you respond?</label>
+                    <textarea id="q2_pushback"></textarea>
+                </div>
+                
+                <div class="button-group">
+                    <button class="btn-back" onclick="prevQuestion(2)">Back</button>
+                    <button class="btn-next" onclick="nextQuestion(2)">Next Scenario</button>
+                </div>
+            </div>
+            
+            <!-- QUESTION 3 -->
+            <div id="q3" class="question-container">
+                <div class="question-number">Scenario 3 of 5</div>
+                <div class="question-text">When to Offer Grace</div>
+                <div class="scenario-box">
+                    A student no-showed for their class. You called them. They said: "I'm so sorry, I overslept. I feel terrible. I still need my certification but I can't afford to pay the full price again."
+                </div>
+                
+                <div class="input-group">
+                    <label class="label">Do you offer grace here? Yes or no, and why?</label>
+                    <textarea id="q3_grace_decision"></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label class="label">If yes: What do you offer and how do you phrase it?</label>
+                    <textarea id="q3_grace_offer"></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label class="label">What's the difference between policy discount and grace?</label>
+                    <textarea id="q3_grace_vs_policy"></textarea>
+                </div>
+                
+                <div class="button-group">
+                    <button class="btn-back" onclick="prevQuestion(3)">Back</button>
+                    <button class="btn-next" onclick="nextQuestion(3)">Next Scenario</button>
+                </div>
+            </div>
+            
+            <!-- QUESTION 4 -->
+            <div id="q4" class="question-container">
+                <div class="question-number">Scenario 4 of 5</div>
+                <div class="question-text">Handling a Refund Request</div>
+                <div class="scenario-box">
+                    Email: "I need to cancel my class. I'm not going to be able to make it and I need a refund. My class is in 10 days."
+                </div>
+                
+                <div class="input-group">
+                    <label class="label">What is your FIRST action?</label>
+                    <textarea id="q4_first_action"></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label class="label">Why that first instead of processing the refund?</label>
+                    <textarea id="q4_why_first"></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label class="label">When you contact them, what's your tone and what do you ask?</label>
+                    <textarea id="q4_contact_tone"></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label class="label">What options do you present (in order)?</label>
+                    <textarea id="q4_options"></textarea>
+                </div>
+                
+                <div class="button-group">
+                    <button class="btn-back" onclick="prevQuestion(4)">Back</button>
+                    <button class="btn-next" onclick="nextQuestion(4)">Next Scenario</button>
+                </div>
+            </div>
+            
+            <!-- QUESTION 5 -->
+            <div id="q5" class="question-container">
+                <div class="question-number">Scenario 5 of 5</div>
+                <div class="question-text">Your Decision Framework</div>
+                <div class="scenario-box">
+                    A student emails with a situation that's unusual—it doesn't fit neatly into refund, transfer, or no-show. You've read the policies and you're not sure which applies.
+                </div>
+                
+                <div class="input-group">
+                    <label class="label">What do you do? Walk me through your thinking step-by-step.</label>
+                    <textarea id="q5_framework"></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label class="label">When do you escalate to Michelle?</label>
+                    <textarea id="q5_escalate"></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label class="label">When you escalate, what do you bring to Michelle?</label>
+                    <textarea id="q5_escalate_how"></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label class="label">In one sentence, what's your job as a Team Lead?</label>
+                    <textarea id="q5_role" style="min-height: 60px;"></textarea>
+                </div>
+                
+                <div class="button-group">
+                    <button class="btn-back" onclick="prevQuestion(5)">Back</button>
+                    <button class="btn-submit" id="submitBtn" onclick="submitAssessment()">Submit Status Check</button>
+                </div>
+            </div>
+            
+            <!-- COMPLETION -->
+            <div id="completion" class="completion-message">
+                <div class="completion-icon">✓</div>
+                <h2>Status Check Complete</h2>
+                <p>Thank you for completing this. Your responses have been sent to Michelle.</p>
+                <p>Your answers will be reviewed Tuesday morning before we start training together.</p>
+                <p>Come back ready to ask questions about anything that felt unclear.</p>
+                <p style="color: #999; font-size: 13px; margin-top: 20px;">See you at 9:30am standup on Tuesday.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let currentQuestion = 0;
+        const totalQuestions = 5;
+        let vaName = '';
+        
+        function updateProgress() {
+            const percentage = (currentQuestion / (totalQuestions + 1)) * 100;
+            document.getElementById('progressFill').style.width = percentage + '%';
+        }
+        
+        function showQuestion(num) {
+            document.querySelectorAll('.question-container').forEach(el => el.classList.remove('active'));
+            if (num === 0) {
+                document.getElementById('nameCollect').classList.add('active');
+            } else {
+                document.getElementById('q' + num).classList.add('active');
+            }
+            updateProgress();
+            window.scrollTo(0, 0);
+        }
+        
+        function startAssessment() {
+            showQuestion(0);
+        }
+
+        function collectName() {
+            vaName = document.getElementById('vaName').value.trim();
+            if (!vaName) {
+                showError('Please enter your name');
+                return;
+            }
+            currentQuestion = 1;
+            showQuestion(1);
+            clearError();
+        }
+        
+        function nextQuestion(num) {
+            const fields = ['action', 'why_action', 'response', 'outcome', 'policy_response', 'why_policy', 'pushback', 
+                           'grace_decision', 'grace_offer', 'grace_vs_policy', 'first_action', 'why_first', 'contact_tone', 'options',
+                           'framework', 'escalate', 'escalate_how', 'role'];
+            
+            const hasAnswers = fields.some(field => {
+                const elementId = `q${num}_${field}`;
+                const element = document.getElementById(elementId);
+                return element && element.value.trim().length > 0;
+            });
+            
+            if (!hasAnswers) {
+                showError('Please answer at least one part before proceeding.');
+                return;
+            }
+            
+            clearError();
+            currentQuestion = num + 1;
+            if (currentQuestion <= totalQuestions) {
+                showQuestion(currentQuestion);
+            }
+        }
+        
+        function prevQuestion(num) {
+            currentQuestion = num - 1;
+            showQuestion(currentQuestion);
+        }
+        
+        function submitAssessment() {
+            // Collect all answers
+            const answers = {
+                va_name: vaName,
+                timestamp: new Date().toISOString(),
+                q1_action: document.getElementById('q1_action').value,
+                q1_why_action: document.getElementById('q1_why_action').value,
+                q1_response: document.getElementById('q1_response').value,
+                q1_outcome: document.getElementById('q1_outcome').value,
+                q2_policy_response: document.getElementById('q2_policy_response').value,
+                q2_why_policy: document.getElementById('q2_why_policy').value,
+                q2_pushback: document.getElementById('q2_pushback').value,
+                q3_grace_decision: document.getElementById('q3_grace_decision').value,
+                q3_grace_offer: document.getElementById('q3_grace_offer').value,
+                q3_grace_vs_policy: document.getElementById('q3_grace_vs_policy').value,
+                q4_first_action: document.getElementById('q4_first_action').value,
+                q4_why_first: document.getElementById('q4_why_first').value,
+                q4_contact_tone: document.getElementById('q4_contact_tone').value,
+                q4_options: document.getElementById('q4_options').value,
+                q5_framework: document.getElementById('q5_framework').value,
+                q5_escalate: document.getElementById('q5_escalate').value,
+                q5_escalate_how: document.getElementById('q5_escalate_how').value,
+                q5_role: document.getElementById('q5_role').value
+            };
+
+            if (!answers.q5_framework.trim()) {
+                showError('Please answer the final scenario.');
+                return;
+            }
+
+            document.getElementById('submitBtn').disabled = true;
+            document.getElementById('submitBtn').textContent = 'Sending...';
+
+            // Send via FormSubmit (free service that emails form data)
+            fetch('https://formspree.io/f/xpqnrdre', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(answers)
+            })
+            .then(response => {
+                if (response.ok) {
+                    document.querySelectorAll('.question-container').forEach(el => el.classList.remove('active'));
+                    document.getElementById('completion').classList.add('show');
+                    updateProgress();
+                    clearError();
+                } else {
+                    throw new Error('Submission failed');
+                }
+            })
+            .catch(error => {
+                showError('Could not send response. Please check your connection and try again.');
+                document.getElementById('submitBtn').disabled = false;
+                document.getElementById('submitBtn').textContent = 'Submit Status Check';
+            });
+        }
+
+        function showError(msg) {
+            const errorEl = document.getElementById('errorMessage');
+            errorEl.textContent = msg;
+            errorEl.style.display = 'block';
+        }
+
+        function clearError() {
+            document.getElementById('errorMessage').style.display = 'none';
+        }
+        
+        updateProgress();
+    </script>
+</body>
+</html>
