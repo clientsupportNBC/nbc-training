@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NBC Customer Service Team Lead Resource</title>
+<style>
+:root {
+  --nbc-red: #DC143C;
+  --nbc-navy: #0d2844;
+  --nbc-bg: #f7f7f5;
+  --nbc-panel: #ffffff;
+  --nbc-border: #e1e1dc;
+  --nbc-text: #1a1a1a;
+  --nbc-muted: #6b6b6b;
+  --nbc-success: #2d7a3e;
+  --nbc-warn: #b8860b;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  margin: 0; padding: 0; background: var(--nbc-bg); color: var(--nbc-text);
+  line-height: 1.5;
+}
+header {
+  background: var(--nbc-navy); color: white; padding: 16px 24px;
+  display: flex; align-items: center; gap: 16px;
+  border-bottom: 4px solid var(--nbc-red);
+}
+.logo-wrap {
+  width: 56px; height: 56px; background: transparent; border-radius: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.logo-wrap svg { width: 44px; height: 44px; }
+header h1 { margin: 0; font-size: 20px; font-weight: 600; }
+header .sub { font-size: 12px; opacity: 0.85; margin-top: 2px; }
+.va-badge {
+  margin-left: auto; background: rgba(255,255,255,0.12);
+  padding: 6px 12px; border-radius: 16px; font-size: 13px;
+}
+.va-badge button {
+  background: transparent; border: none; color: white; cursor: pointer;
+  margin-left: 6px; opacity: 0.7; font-size: 11px;
+}
+.va-badge button:hover { opacity: 1; text-decoration: underline; }
+
+main { max-width: 1400px; margin: 0 auto; padding: 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+@media (max-width: 1100px) { main { grid-template-columns: 1fr; } }
+
+.panel {
+  background: var(--nbc-panel); border: 1px solid var(--nbc-border);
+  border-radius: 8px; padding: 20px; margin-bottom: 16px;
+}
+.panel h2 {
+  margin: 0 0 12px 0; font-size: 16px; color: var(--nbc-navy);
+  text-transform: uppercase; letter-spacing: 0.5px;
+  border-bottom: 2px solid var(--nbc-red); padding-bottom: 8px;
+}
+.panel h3 {
+  margin: 16px 0 8px 0; font-size: 14px; color: var(--nbc-navy);
+}
+label { display: block; font-weight: 600; font-size: 13px; margin: 12px 0 4px 0; color: var(--nbc-navy); }
+label .hint { font-weight: normal; color: var(--nbc-muted); font-size: 12px; margin-left: 8px; }
+input[type="text"], input[type="email"], select, textarea {
+  width: 100%; padding: 10px 12px; border: 1px solid var(--nbc-border);
+  border-radius: 6px; font-size: 14px; font-family: inherit;
+}
+textarea { resize: vertical; min-height: 80px; }
+button.primary {
+  background: var(--nbc-red); color: white; border: none; padding: 12px 24px;
+  border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer;
+  margin-top: 12px;
+}
+button.primary:hover { background: #b51030; }
+button.secondary {
+  background: var(--nbc-navy); color: white; border: none; padding: 10px 20px;
+  border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer;
+  margin-right: 8px;
+}
+button.secondary:hover { background: #1a4368; }
+button.escalate-peer {
+  background: var(--nbc-warn); color: white; border: none; padding: 10px 20px;
+  border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer;
+  margin-right: 8px;
+}
+button.escalate-michelle {
+  background: #8b0000; color: white; border: none; padding: 10px 20px;
+  border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer;
+}
+.staged-response {
+  background: #fdf6f6; border-left: 4px solid var(--nbc-red); padding: 16px; margin: 12px 0;
+  border-radius: 0 6px 6px 0;
+}
+.staged-response .step { margin-bottom: 16px; }
+.staged-response .step:last-child { margin-bottom: 0; }
+.staged-response .step-label {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
+  color: var(--nbc-red); font-weight: 700; margin-bottom: 4px;
+}
+.staged-response .step-body { font-size: 14px; }
+.staged-response .step-pause {
+  font-style: italic; color: var(--nbc-muted); background: #f0e9e9; padding: 8px 12px;
+  border-radius: 4px; font-size: 13px;
+}
+.why-box {
+  background: #f0f4f8; border-left: 4px solid var(--nbc-navy); padding: 12px 16px; margin: 8px 0;
+  font-size: 13px; border-radius: 0 6px 6px 0;
+}
+.why-box .why-label { font-weight: 700; color: var(--nbc-navy); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+.policy-box {
+  background: #faf9f6; border: 1px solid var(--nbc-border); padding: 12px 16px;
+  border-radius: 6px; font-size: 13px; margin: 8px 0;
+}
+.policy-box .source { font-size: 11px; color: var(--nbc-muted); margin-top: 6px; }
+
+.pushback-result {
+  background: #fff8e1; border-left: 4px solid var(--nbc-warn); padding: 12px 16px;
+  margin: 12px 0; border-radius: 0 6px 6px 0; font-size: 14px;
+}
+
+.escalation-panel {
+  background: #fdf2f2; border: 1px dashed var(--nbc-red); padding: 16px;
+  border-radius: 6px; margin-top: 16px;
+}
+.escalation-template {
+  background: white; border: 1px solid var(--nbc-border); padding: 12px;
+  border-radius: 4px; font-family: 'Consolas', monospace; font-size: 13px;
+  white-space: pre-wrap; margin-top: 8px;
+}
+
+.note-template {
+  background: #f5f9ff; border: 1px solid #c7d9ee; padding: 16px;
+  border-radius: 6px; margin: 12px 0;
+}
+.note-template textarea {
+  font-family: 'Consolas', monospace; font-size: 13px; min-height: 180px;
+  background: white;
+}
+
+.save-bar {
+  display: flex; gap: 12px; align-items: center; margin-top: 16px;
+  padding: 16px; background: #f9f9f7; border-radius: 6px;
+}
+.save-status { font-size: 13px; color: var(--nbc-muted); }
+.save-status.ok { color: var(--nbc-success); font-weight: 600; }
+
+.policies-reference {
+  position: sticky; top: 24px;
+}
+.policies-reference details {
+  border-bottom: 1px solid var(--nbc-border); padding: 8px 0;
+}
+.policies-reference summary {
+  cursor: pointer; font-weight: 600; font-size: 13px; color: var(--nbc-navy);
+  padding: 4px 0;
+}
+.policies-reference .ref-body {
+  font-size: 12px; color: var(--nbc-muted); padding: 8px 0 4px 12px;
+}
+
+/* KPI CARDS */
+.kpi-week-label {
+  font-size: 11px; color: var(--nbc-muted); margin-bottom: 12px;
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+.kpi-card {
+  background: var(--nbc-bg); border: 1px solid var(--nbc-border);
+  border-radius: 6px; padding: 10px 12px; margin-bottom: 8px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.kpi-card-label {
+  font-size: 11px; color: var(--nbc-muted); text-transform: uppercase;
+  letter-spacing: 0.4px; font-weight: 600;
+}
+.kpi-card-sub { font-size: 10px; color: var(--nbc-muted); font-weight: 400; margin-top: 1px; text-transform: none; letter-spacing: 0; }
+.kpi-card-value {
+  font-size: 24px; font-weight: 700; color: var(--nbc-navy);
+}
+.kpi-card-value.pending { color: var(--nbc-muted); font-size: 18px; }
+.kpi-card-value .unit { font-size: 14px; font-weight: 600; color: var(--nbc-muted); margin-left: 1px; }
+
+.log-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px; }
+.log-table th {
+  background: var(--nbc-navy); color: white; text-align: left;
+  padding: 8px 12px; font-weight: 600; font-size: 12px;
+}
+.log-table td { padding: 8px 12px; border-bottom: 1px solid var(--nbc-border); }
+.log-table tr:hover { background: #fafaf7; }
+
+.modal-bg {
+  display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(13, 40, 68, 0.75); z-index: 1000;
+  align-items: center; justify-content: center;
+}
+.modal-bg.active { display: flex; }
+.modal {
+  background: white; padding: 32px; border-radius: 8px; max-width: 480px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3); border-top: 6px solid var(--nbc-red);
+}
+.modal h2 { margin-top: 0; color: var(--nbc-navy); }
+
+.hidden { display: none !important; }
+
+.banner {
+  background: var(--nbc-warn); color: white; padding: 10px 24px;
+  font-size: 13px; text-align: center;
+}
+.banner.success { background: var(--nbc-success); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-wrap" style="background:transparent;"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOkAAADpCAYAAADBNxDjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFxEAABcRAcom8z8AAEViSURBVHhe7b13WBRJF+9//7v3uc+9z+++u/vurrtKzoKKOWfdXXNEQEAUs5gw55zDqmteAzmYEQMmwBwwZ1EEERMiGSXp91enuseZgUHB2DPUZ5/aYap7xu7p/vY5VXXq1P+AQCBQNEKkAoHCESIVCBSOEKlAoHCESAUChSNEKhAoHCFSgUDhCJEKBApHiFQgUDhCpAKBwhEiFQgUjhCpQKBwhEgFAoUjRCoQKBwhUoFA4QiRCgQKR4hUIFA4QqQCgcIRIhUIFI4QqUCgcIRIBQKFI0QqECgcIVKBQOEIkQoECkeIVCBQOEKkAoHCESIVCBSOEKlAoHCESAUChSNEKhAoHCFSgUDhCJEKBApHiFQgUDhCpAKBwhEiFQgUjhCpQKBwhEg/k3fv3sl/lY+8vHxkZGYj9/VruUYg0I0Q6WdBAn2HC7G3MHnmRkQdvyRVf4CMzBys2bALXXpNRYOWw/BnlzGYMHU9rly7L+8hEGgjRPoRyNLl5pZm7SQrum3nMfzP/7TB6nW7+PvSeP0mD8NG/Y2fqnRG63Y+GDn2H7h7zYeJnTMc6vRDzMmr8p4CgRoh0g9w5Voc/ug4Bus375VrdHP7bgLMqrpiw6YP77djVzR+NuoKz0EL8SotXa4FIo+eh1U1N3RxmsKEnC/XCgQSQqQy+fkF8l9qHsQnw8axDxPPVBQWFsm1JXmVlonGbUZi9Ybdco1ufCauwc8mXRF98rJco27Peg5aACOrnrh/P0muEQgkKrhI3+Hs+esYN3UtXPvOwT0dAvEashA2NTxw42a8XFOSt2/fokfv6Vi0PEiuKQnt4zlgIYxtXXDn3iO5Vi3SpauC0bSNN27feijXCAQSFd6Srt+0Gz9W7oRfzbrDuc8sZGfnylskAkIP4YcqnbBxa4Rco5vQ7cdw+Og5+Z0O3r3DsNGsPWrUBf5BkXKlmrz8PKRlZKKgoJC9+7QeY4FhUuFFeudeAmrU80K95kNhW8MdE6as1xpWuf/gMWxrecKt/1xuDT+HneHHUdmyJ+xre2Ldv3uQmpohbxEISqfCi7SwqBCunrNRr+lQLFkZCnN7V2zQ6CgqKnoLt35zYevoiQcPk+XaT+Ed+64irNu4h/fk/lC5M1r8OZqLNSVF3YkkEBRHdBwxVq/bgcoWTgjfdxJ/r94OI2snRMWoOneAdZvCmTvcTaeb+incZO3OaXM2w6FuX/xYpSOatx2JvftPyVsFAm0MUqQUzXPk2AUsX7UNG5lVvHHjgbxFN9duxMHYthdGj1vN3/cbtAg1GwxAnNyRdOtOArOwLhg8fPlnu7ya3Lv/GDPnboWpnSssHXrjaMzHgyEEFQ+DE+nNOw/Ry30Wfrfogd/Mu+PHyh1gV9MTK5iFLCzQPYzy5k0+OveaglqNBiEtPZO3FZu3GYkO3SfyjiRyU53cZ6JafS8kJb+QP1V2qI1741Y8jyoq1NExtIpZ8h+rdMbIMSs+OcxQYLgYlEhpaKNB8yGoWrsvNm7Zi/MXbyMo7AiatPFmIuiEWfN95T1Lsoy1R38y7oKIA6f5+0tX42Bd3R2jxv/D36/buBs/G3fFjj0x/H15KCgo4EM0dRoPRuqrkp1FdNxW1dz5g0Dq3RUI1BiUSIePXgnzqi44cVo7vC7uwSO07TgOv5h0g2/AAblWm7PnbzC30wWjZVESO5kgqTeWPnOPCYk6lYYxa1deKFCiu8s01Kg/EKlpmXKtmpu3E2Bq64K+Axcxd1pYUoE2BiNSmlHSsKU3ujIx6OLy1btwqNMXVWt54tLlO3Ktmtev36BthzFo0noEUl6mybXAgmWBsKjqir37T6NXn5lo0MIbz5+/kreWXVAjxq5EJbPuOBB5Vq5Rs3HrXvy/3zpiyfIQuUYgUGMwIk1NS0f9FkPRxXmyXFOSzX4R+MmoM1w8ZvFg9+LMW+zPXdpDRy/INUBhYSH6D1nMxDkU/Ycu5T2/Bw9/IGihFE6cugIrBzfUbjgQYTui+PhrfMIT/jc9OKijimKABYLiGIxIeWie2wxUr+eFh+zm1wVF9Xh4zeOzULb675dr1cScuMw7nKbO+leukSDL2qHbBFjY94axjTPGTF4rbykfu/eeQKPW3jy6ydaxD+xZ2/kXk67cA/gU4QsqBgbVJqXAgJ8qd8LK1dvlmpJcuXoPdjU80LgVua2pcq1EekYGmv8xio9bZmVrT0+7dj0OtRoNRCXT7ujhOh05pU5f+zAvUtKk8dh/tmHh0mCEhB3B46fl7zEWVBwMSqSJiU9Ru/FAXhJKsabE7AV+PB53rY5ZKxOnrYeRlTNiTl6Ra9TQpO7g0MNITk7F26IvN14qITqMBLrRG5FmZeVg6swNWPz3hztXlq0Mw39+64ixk9ew2173jR+f8JS7mp17TkJ2do5cK0Ht0f/zy1+YPmczeyeEI/j+6I1IX6Sk4M/OY/HfKl2wduMeuVYTSVAvUl6hZbvRvIPn8NHzvE4Xw0avgKWDG27fUU0bk3j+4hWW/7Md5y7cZu+ESAXfH71yd+PjH6M1E2Al027Y7Fuy40fFvoNnUMXSCa3Yvi+Y6CS0Bbdi7Q7816gzLsTelWvKJ0iKDFIVXZAV5/9pbBfBRIJPQe/apPfiHqFZm5H43bwn/IMPybXFeYcZ87bi//3WiecRKtKRVWHCtI0ws3PF3bhEuabsCiLhUW+yLpGW9VuEXgVlRfki1WF+aBZJwxZDUMWqJ0J2HJNrtcnKyoVb37n4oXInTJu9CZmZ6rYn9a6aVnXFQO+lyM///jmFhGAFH0KRIiUrdfd+IvILSEC6b2GKIKrdZBBMbJyxK+KEXKvN8xepcOs3n4+L/tV5AqbM3IR+gxdycbfvNol3IOlCl4X8EPk5Och6+gRpd+/i2flzeHjkEB4ePIgEVhIPRiIxMhLxkez90aNIuXwZ6Q8f4nVaGt6W49/4HhS8eS2d153beHLqFDuHSHZOdD7sXNjfqvN6FBON1OvXkJ5A5/Xqi84UEihUpPsPnYVtTQ8cOHRGrtHNudhbcGwwgAcZ7NcRbkdkZuVgFWt/Nv9zJOxreaJ+8yGYt8gfKSnq0D+irMKkPXKePcPjmBhcW7cOx33G4GCvXtjZsiVCatVCUFV7+FtZwd/CAv7mFgigV1Z8LcxZvTWCHaojrEEDRHTqhGODBiF26RJ2wx9C9pPSh4y+Ffk52XjBHiI3ff1xYuJEHHRxxa6Wrdh51UagXVX4yedC58SLuTmrY+dlY42gGtWxrWED7O3UEUcHDMD5efMRt3MHE/gdFLzWTkkjKB+KE+nj5Beo23QwE9Uo/vfHoGB6ism1ruGBw0dK782l4INHj54iPT1LrtHmYwLNTEjEnaBgRHt7Y2fT5gi0sYO/qSn8jIz4a5CFJYKtmQhtbBBia4sQO7uSxdaObbdFMBNxoJkZ/I2NEWBigkBrK2xv1gzHR43Gg4i9yMv4dpkaWOsaz5kwY5cuw95u3RBcvTr8zczha1wF/iaq8/rAOVFh2+i8g9lDiAvX2ISfW6ClFULZg2t/Lyf+/U/OnUVRfslwTMGHUZRIKU528IglsHH04FayrERFx7LPuMOOWcro4+qMCh/nw8IsYsfz+MRJnBg3FjsaNWZiNGM3YBV281kgiIktxI6VquwmrVr1k0swfZ7d5EGWlkzwTLTsdW+HTri26V/kvPh6kUhFBQVIio7BsSGDEVKjBnzZwybAzBQhzCoGk/Do+Jj1LH68Hy72vITK4g2mhxJ7cAWy7/WtYoQgh2o44OqKWwH+yGbeiAplO/3fH0WJdIvffj4OOmNu6fM+SyOSucgW1XqjWv3+OHPuhlz7abx9W4jEQ4dxuG9fdqPZcmsZyMQjiVLXzfnlCv17AczK+jErtqtta9zYsgV52bqt/6fy9t1bnJo+A/6W1uyhY4wgJiRdx/KlCwk2gLwP9rDb3ao1rqxahazn6n4BIVbdKEakV67HoVo9L/xi2g11mw2FX/DBcnXeEOH7T8HU3gU1Gw7ACR1hfcTHvvPZpYvcugQyF8/fxBgh8g0cbK/7xuPuHrmwbD+yhiQwf+bCkrtH4pYKs5Dk2poy15a5g+TucrdYZbF0FLJGAeZ0Q5vgQE8nJLE28JckZtRI+FWuwiw5WXMdx8AtIbmx0nmRe06uudZ5sb/pXEl4QayNGqQ6L2ZBS7fCkpUNZO11+vyu1q1x098P+W/eyEcmKI4iREpzQWmWScNWw7B+czgatRrOp5SNGL0SSY/L5/Jt3xUFU9teWLwsWK5Ro7tzSOqJfJOegdjlyxBcyxF+zDXjN5vqpip+ozGLSjeuvxG7aZnFC7S1QWjNWtjRvAUOODnh2IABiBoxHCfHjsOZCRNwcswYRA/zxpF+fRHRsTO21W+AQCb6ANb2o+8g9zmYfWdo8X9H/rcCWBsvyN4esQsWsfaqlNmBnclnWZ64sBBmrU24YDT/PWoz87Y22xbE2pghjjWxs0VLRDq74NigwUzco3BqwnicnjgBMaNH4Sh7oB3q44Hw9u34eQWz4wwwl1139j28rfqBJgGJ35dZ1gNubngWGysfnUCT7y5SSho2cfp6PiF67z4pY97duEfo038+T1rdrO0oHD5avot37uItpDPhq/io9bxyCftdnPmNFWxpxW8eXZaTC5OsCXvd2aw5othNe2nlSiQcisSr27eR8/w5CnKyeVu2+CAEDbcUFRQykWUiMzERyadPsnbnZsQMH4EdzZrCj1nYQBMzjYeDupB4yfrS8R3y8MCre/fopORv/jReXr2KkOo1uAfALZuF1OETVK069rMHzfm5c/AgPBwpN24g9/kL5OfmouhtyaAQGm4pzM9jD7k0ZLDzenL2DG4FBeDUlCnY37U7+z4H/iAjD4N3PhU7N16Y5SWrGlyzNq6v34AiBYxdK4nvLtLkJy/4tLGJ0zfINRJ5eQV86MTcwQXG1k5YtDQY2Tlffi3Pezt3ILRuXe7GSVaFOj/ULmAYu4GCLKUbOKx+fUQz6/Fg3z5kJj+Wv+Hzoe+6ExaGQ+59mFVmbWB2U/Mbmj0oQlVWiB4a7Pi2/lYJB/v2QUHe5/WSvmEW+UDHjvD7/XcmIjPsatkSFxYu5O5+/hcaMsnPkoZ0Lq9YgYguXRBAQ1NkvUt5EJFH4cesb9Twkch58Vz+FoEi3F2apF3a0MipMzfQttM4PrPFyW0ma7t+mXU8374rwqUVKxHA2lyB5uwpX+ymoUKdRf5MnDuZG3t5+d9Iu/911xAtKsjHoyNHEOnmwcdYAy3YcRVr25HFOTJw4Ge5uqrPRnsPR7BjLVxdswbZT7/uOG1edibi9+/Hob79EMhd6pKuNj0gyd32q2KMiO49kHpXFVddsVGASD9+uz1/kYbxU9fjV9NuqFaXXWQes/vptymN1Z2bPUca32RPd+0bhVlR2f0KrVcXF5cuRVbSl7OapaF5NoVv3uB2cDBrC7bgbVbqwJGOzY5bovPz5sl7fh7JFy/hJXPTvzaa5/aWNQUSDh/BQRcXeXzZvFhbnHky7MHkb2SE3W3/QApzyys6irCkZWXbrijec0trfFKqzSdPX8pb6DYom2gLmbU6O30md191tf+CLSzhZ2aJo4MHs/bYNflT34e0+Hgc8x7G2qv0MKEhIDsEsJuaxhn1nfzcHFzfvAlhDerzjjHeI6xxHULt7BHI6nc0b47nV3X31FcU9EKkmv2Yt+8mws1rHv7ze2c0+2MEjkaXPes7dSCdX7iItfmYG0nBCJo3BSsBpqy+Zi3c3LKZd/4oATqOq+vWIJCOz8wMQcyaPj55XN6q/6TcuI5Id3eNh6bUJ6B6pWGwXW3a4tXde/InKh7fQaSfH3yd+/oNz8BgzlfX/vCShJrc3LKFtfUsdQzeMzfSmLlXrdsi+bSUHFtpxO3ZxSN2Au3tv3rb+FuTl5WFMzNmMQ+GeQzWVsXcX3J9qY3ajfeeV0S+g0jf4eTpK/ANOIgzZ2/g8eNnPOftp3DtxgNk5ZStJzIx6ii7yR0QZGnBRfn+JmAupB97WtNNkBoXx/ctu/P8LVAfyYO94djdpXOZO3k+NvSkJN69e4tLq1cjwNqOxwCrLSpdo6rwq1IZUSNHojCv4g3PfHORvnyVgTYdx3ArSBFGVJr/NRp9By3C3EUBCAo9guMnryDuQRKyiuUfKjfyPZqekMAjWwJNTdUXXi409LKvlxMyH+vHMvhPmHv4hlkeXZQUpf6IVMX1TZsRSLOFeIeeWqjBtjZ8eObaBmmoTv/O7NP55iI9f+EmzO1c8EfncQjZfgzr/g3HkBF/o13XCUyw/fgiSybWvVC7yWC06zaR58mdPnsz/IMOIebUFdy68xCpr9LLPJb/trAIx0YM51FEmuKkQmFuezp04CImlH7hP3R8JFB9spwf4tKqVaxZYib3aqvbqOQFBdeoUeEik765SGldlOBtR2FXqw+6uU7Fw0dSgDXVJyQ+xamz1xEQchheQ5fwdVhoJTOHul48Ioly6tJ6LDv2RPPPfAjV7Xp72zY+B1Ir2sW+KoLMzRHWqCGeX5e6+D83zE4JpLx8haV/h2D2PF/MYGXpilBWp38LFFMU0+kp0+BnzDwfzbFUdt2ofXrQpTfyctURZYbOd2iTSpw4fR01Gw3g456ROuaBUm5cu5p9cC72Jm7fe8STiy3/JwyTpq8v8/KDmU+eYGcr5uZSSJrqQrNC8yMDmGjv75NW9NZ/eUrcvBEH+5qeqGLlhN8te/HV5a5e089OprzMTBxwdubBJJrXjocQmprz2UEVhe8mUoJidNszl7aKhRNWrdnBl8YnEpKe8YncmiucfQrn58/n8a6aFzmYOiHYhT+nFRBgGCKlpkS1Ov1g49iHz8ml3MIx7+fX6t85vmDtbwoo4dMENa5hkBnFTrdE5jcIMlEC31WkxMvUdAwctoTnIRo1bhVevcrky0QYs3bphUslVz8rK6l3biOkbh12gbUjiijKZV/nrshLU6X6NBwOHzoHO0dP5oH0hS2zqDS/dtduaYqb/rVXpeO9sXUL/Hlwvnawg5+RCWIXL+H7GDrfXaQEzYSZvzgAlcy7M8s6AfWaDsHQkapVrz/t5jo9awbPNqAV+2ptzQPYE48e4fvon235MKHBB/nKbXa1aInHvjCxccHGLfvkrfqFqglS8Po1It16I4Dm9vLrSB1JDnzWzs7GTZD5SDu5uSGiCJGq8AuKhIVDb7784JoNurLUl420+AfY1qAhgopZUZp4HT1yJN4ZaDa7Neu2w7xqby5Q+9r9YMxEuujvUHmr/vI45jiPuJLmpqqvJ7VXL69cJe9luChKpAQtitSo5TBYV3PHuk3hn+SmXV61go9/agqUZ0NwdMTzK+XJgaRfzJ/vxxN+q0XqjMkzNslb9ZeioiIcG+4t9fZqjJ1S5oo97drxNKKGjOJESty6ncDc3vH4kbVTJ0xZhxcpZR9GeJ2ehr3tO2r36FJnEXOXjo8dI+9lmEyYuBamzHqSQKnQEv+82WAAnkPyqZPcmoZYawylUYCDuTkeREihoYbWfFGhSJESKalp6D9sCf73T39iykxa1LdslyDp2FEEUFiZRtIwytMTSIHpCo3L/SIwj2Ow92KeLFwlUnJ9XTzn4s1nThBXAjTF7VCfPjzLw3uR2tnz99HDR8h7GSaKFSlBgfS06nbojqNyzcc5M2UqD5Z/fyFZoQRgkW7uBh33mffmDVw953B3VyVSSwd3/NV1QqkT6vWNu6FhoLSqmgEO1Hu/rWFDpD9UreljeHx1kSY+eoLok1eQmPQcb8qVu0ZtOYveFrD/f9yS5r56hd3t2/MpXe87GJhFpRSSN7ZslfcyTNLSMtG5xxRYMOupEql1NQ80bTMCjx8bxuyRrOQn2NmsGQIpgkx1fW3Z9TU3w93tpa/uru98dZFSlBD11lar64XW7XwwcNhSLPk7FLv2nMD52Ns8eqjwC62a/eTMGQQwt1adyaAqz7wQVq8eUuMMez7ik+QUtG4/BpZMmCqR2tTog9qNBuLOHSk22RCIGTOGx1y/Fykr1ElIGQwNla8oUsnynT53jbcp3b3mcZFWr+eF3yy644ffO/GODcqx24FZgKGj/uaCjjh4mk9Be/bspbxgU9mhGRK8zaLhDlFayUMefRQziftrcT/uERo0Hwrr6n3ei9TW0ZNHIJ06fV3eS5+R7qe4XXvgR52CGuPfQeYW2NOuPfKyMvk+hsZXtqTaLmpmdjbu3n+EmBNX+KyW6XO2wLXPbDRq6Q37Op58+pqRlROP2W3edhS3uknJZXfVooYN5TmAVBeP5o1SWODVVWvkPQyXK5fvcUGSMFUipcgjWiNn196T8l76jHQv0YR3WvAqyFI955TPP3V0NNh8SIroOCIrd+9+Enazm2nspPWo2XAQ/vNbJ9RpMhgvi61+Vhr0FA3v0EF76MXWBkHWNkg6onsNU0Mi5sQl2DL3lqKNHGSR0nipuYMrNvnpZ9SRLory3+CQa2+thzE1bygd6D0DbZd+N5G+efMa9+IScejIefyzbheGj12JTj2noHHrEajdeBBrX/lg0fIgee+P8/LOHWxrUE9K2CVfPEpmvbNxY2TEP5T3Mlx2h8fAxsH9fSCDSqSmdq5YuiJM3sswODtjBm+HqqOPJI8pduEieQ/D4puINCcnl2daOHwsFivX7MAA7yVo1W40n6ZGa4bSshIunrMxZ6EfdoWf4MEMaeUcNnh07BiCqMNII8EYLeMQ0a0rCtkDwdDZzKwlzbVVCVQqXjCxccXUWfofdaTJLf8ABFhI2RNV15pSsMZ4exvMxHdNvqpIY05dxghmIbu7TmdC9GYWciCa/TESvb3mY84iP2zfHcPnO36JcTzKU0vpNdQXzo73AkYNHSrvYdgsWxkCU9amLy5S6pwb7qOarGAYPD5+HAGsKUOJtN8/kNm13+/UE/nZhjcZ/KuKdPCIpfi/P7eDhb07+vRfgJCwY0hKTmE3TFmGXMp3U1EWdloDs7hIz82dI+9h2Eyb+a9OkZqxOupZf2NAgRyv7t5BkKOjtI6NLFJa1W132zbINsDlKb6aSIuK3mLIiGUwsXWGZXU3ODDXtmaDAWjSxhuufedgxtwtfNbLsZhLfPJ3dtbnrT9ybs4c+PIJ3rJImVhp7ujtzYbl6pXGcJ+VMLFTx+2qREoPyI6srf8qzXCGJ3KePcWuFi15n4NKpDSBghJtp8c/kPcyHL6aSN+9fYcXKam4cesh9keexYp/tmHY6L/Rqedk1Gs+BMY2vfCf3zrgd4sePGNgy79GoXe/2Zg+fyv8QyJx+Vocz3VTVo6PHcunLqkuGhVfM1PcCzOsThNdFBUWoc+A+cySSiJ1qOOFanX6c5FaVe+DFm1H43E5l5BUMjnpUmQZWc/3IrWxQVD16ki98XkLSCuRb9JxpAkFKDxKeooLF29hd8QJLF0ZikHeS9G2wxg4NhwAM3tX/K8f2qCXx8wyi5Qc46jh3sy91Qi+tpUWqk3YZzjDD6WRk5uLHq7T+G9nV9MTdZsMRb3Gg2Fbqy9saniiVsNBuHNXP1KWloWC3BxEOjtLyym+v962CGDeU8rli/JehsM3F2lp5BfmIzHpCU6eucqX5T90+AKrLVu7lDpFooYMYu6thiVlIqVFcJ9EGf4Y6ctX6fizywQ+Yd6mugd74I1He/aech1RGhWyrmfP3ZL31n9owa2jnn2KXW8mUhtbPD9/Tt7LcFCMSD8HsrjHBg7klvT9EgU0wM1E+vT4l13G/uuj68H04YfVw8SnaNp2JCyrubHSG06uMzHYezlsmRUly2pd3R37Dp6V99Z/aInII337akeXcZHa4NkZwzlPFQYhUrKkxwYPRiCfuS9dNCkKxRrJR8s+zU0JUG4f6onNzslFNnPraAmOt28LP9gjfv3mAz68RSGA1Jvbf8hizFnkD5tq7qha25OPn/oHHZb31n+KXr/G4d5uzN3VbN4wkTLvKSWWPDDDwjBEykr08OHabVI7W/ibmyN+T7i0k55AAp04dQM6O01B516TeVrTzEwa+yvdmp4+cx0OtfvClrm3lHxs9PjV2BJwAFbVpaRkZnYuWLF6m7x32ZoQSiYvMwMRnbsikF1f1fWmjqPAqvZ4aYDLJBqESImT4yfwfLpqkdrB19QUd4MD5T30A4rMIqtY2cIJlS2dUK/pUCR9ZD7o/gNnmUvrwQTpyYe8Zs31xcFD57mba1eL0qi4Ytps1VCU/os0N+UF9rRpq5WPl4+Z1qqFV3e+/qLI3xqDEemlxUvgW8WYiZMEKhWyrJeWL5f30A92R5zkGRVoBgv1zFav1x9Xr0urvZUGLXJFMboUq2vCXleu2YnYi3dQlVlWLlJWN3z0Sran/guUyHj4ENvq1ZdWaZevNY2Zbm/aFBlJhpfi02BEenXDRmz68b88yogKBTJs+flnRA0ZJu+hH8ya78uz/FGPLJ9qxixkBLOUH2LNxj3czeWzXqr2hm9gJOLuP+ZDWjR1zZyJtI/XfBQVUoYL/efJubPYzK6xn5ER/NiDmMqWX37FjrZtkZOWKu9lOBiMSJ/GXkD0mNE4MX48TkyYwEv0aB9cXrMORXqSLY86iXr2ngFzezcu0qrMCpLA1qzbJe+hm3mL/Lm1JFFbMRc3fN8pPH32Cg1aenOR0zzdLk5TkcHbtvpPxuPHuL99O+J37sQDVuj1flgYkqKjUMgTBRiGx6DCYET6IfQluPzOvUTUZW1QKyYsKaxPSsspZUssnbGT18LMrjcfE6Vy/ORVZGXmoE2n8XypCXKfW7bzKdcEeoFyqBAi1RdCdkQzQblxi1hVJVJmIfsNXVyqN1D0tggDvJcya+kmZWWo2w+Xr8bhbVERurvNhBlzfymlSt2mQ0BTAAX6hxCpgpgy418YWztzN5dC+ujVwr43OjJX9VUp0/ne5OfByWMWd5FtanigbpPBiIuTQgD7D13Ke3ZJvBTPe+bcTV4v0C8MTqT6Om8yKzsHXZ2nMotI2RX6oUmTgahV34tn/6McUA/in8h7apORlc1XSScLTO1PSuH55EkK3zZu8jruLpNlpmikSB5qKdA3hCVVCNdvxcOxQX/YMKtHq6BPH7scf/01AhZMeA61PEuNvU1+mooWf46CVTV33vb8o/M4vHqVwbctWBLARUqiN7VzQch2w49jNkSESBVCYNgRHr5HoX21Gg3CsciT6OMxg1tWcnl37NIdg3z3rjqVpwVzeXu6zeLpaogNm8JhwdqqZEmpbbt6w25eL9AvFCPS/PwCPHiQjDvsprsb9xj3WLuKJoPfY3/fvScX+rtYoe1SSZIL1dNnpb81C//MPWmbVNTfoyrSvslanytTuf8Jn2GFxjPvs88OHbWcd/JQB1CH7pOQ+vwFfIYvgTFrU1K7kubj6uJ87C3UqD+Qtzuph5faoQUF0njojl3HmYX1YCL15N8xa4E/ryeSmUtMv3XJY6LzYIXORz6nuBL7KLfEsWOOe/BEeuXHL52DZrnD7gFqPtBqbfqAYkT6+MkLdOw+GbUaD0KDVsOk0pKKNyvD5UJ/y+9bSHUN2WvDFiOk9y3YNvq75Qg0pG18u7e0D/+8qtA+I+VX+hxtZ+/599D+0mek7yxbaajxXWUudJzstSE7J5r4rsruN2rCP+wXeYd5M9bAhLmrJDCfieulH6oYkUfOw5ZZShIpubZjJq6VtwDHoi4ygUrT1UjAIydI+YcTHz1Hpx5TULvJEPk3oPOWjqk+/w2oTv592N/0+6p/Y4UX+k1b0fGXfry1Gg9Bu26TkJGhH+PGihFpUtJznjWQom2ofSUVD7mo3usorM0mFdYmY0X9XqrTKu8/x7bpKpqf0/w3PrPQmiy66unfoWOmQkIikdJaLr6Bh/hvsmVDKH9PaVFc+85lFrJkniJqZ5KbTC6tsXUvzF7oJ28BLl2+x6ysF2/nWjC32WPQAl4fGHIEVax6wZIfg3zO/JjoVSp0zPy42TZLrX1KKx/bTkX67uL1tBatqhTf9uFS/LtK/27NOlp5riFrIujLQlaKESkt6FSnyVBUMu3BQ9xKFudif2sUW7nI201tXOW/qZ69ytvpAUCF11uX/B5T/h2ssFfpb+19jOk7qN621/vvlLap/w3VMbx/z4uL/O/K295/p+q9VCio3rqaGy5fkdatiTp4EvaOffj0s7adxuNFSsnFcmmhZfouEjj9G/+s2ylvAeIfPkW9pkNYO7cPLO3d0d1lOnJzczBkxFJ59TXKgdQbRprHw46Xn6P8nqyzVE+/q+pv1XZ1oVXFtd6z30j6HvkzVM9/C1aspX1MbOTfUeNzqmKq+Z7t8/7ayEXr96TvY4UfHz9e2sa+W/5++izfxq+5C34z64HaDQciLU3qYFM6ihHpy9Q0zJ7nixFj/8GYCevgw8qYSeuZ+8ZemQs3ZhIrqlfV37zQdrm8r1+PsZOKfa743++L+rNjJ67ReC/VjWF1Prxe+3M+EzTfr2f7sGOmvydLn+N/8++S/6bvkv/9sZM2sNcN0jny/aQykp377AW+SMuQnvA3r9xCnYb9+RhovWZDcPNmySRbi/8O4TcmWVIK/wsMlqww8fx5Kl9/hywM9fx26jYR0cdi0aSVNxeujaMHernPwMRp/7J/n/3W/PeWj4efPx3fOum3pN9HPn76PfhvonFO6iJ9RrNO1++nXej7pL99VN8pf6/mdfSR/x4r76uzaF0XKnTs8jnIdaPY7zxrztb3HWxKRzEiFZTkWVIyWrUdzkVKbcsjUbHyFjVTZm7mloPcZVpFjaatqaBY3a4u03ivL4my1Z8+GDF8Gf8ucl9rNxqMmyIKSfEIkSqYnIx0OPeayEVK45z+GlaSoCwOI3xWcXeOBEpRRSdPX5O3Sj3mfQcv4p1G5NrWqN+fB0hQb685q+szYKHeTD6oyAiRlpNvGdH0tqgA43yW8x5fcmkXLtVeGyc/Px8eXvN5m5UsZe3Gg3H1+n15K4Md67jJ63k7zL6WF6pS9oZanjwumNJ/UvYGZWNYs1k+FSFShbPm72DuztIwzHBmNTVv3OycHJ5mxYK1NykksFHL4YhPeCpvlfZbsCSI9/pSx5JqZg0PuG82GLfvKtfVpaMXEpUwaJHmZWTg2YULeHHxIiuX8OKS9Prs3DlkPtKPGfw7g/ezNqUrs5Zu6OE6HXkay0VQb2/r9uP4sAJ1DLVqN4bVaS8VuX5TOMxsezORqtctJdeZgh4oqbaEMuWQ8/IFzs2dx1PjnJ48GWeoTJmMGB8fXPP1L1fydH3GoEWa8/w5dvzxB/xMTBBMeXjtWGGvtLBTeKdOeJ1WckhDKVB7kzgZdRrVavdh7VJ3NP9j5PvgeYJSeVLwBVlGS9Zu7ew0tcRyHaHbjsKKbVOJlNKpmLH3AcXat0rk2po12FqpEl/mkNJ38mJkhM2VfsXt4LIvi6nvGLy7e33TJmw1ZiK1tuVpH3mxtoGfsRGurlVH5ygNlUjv37iDRk0HM2H1hmPD/rh06S6vJ67deCgF5bP2qAVrl/buNw8FBYXyVonIw+f44sKUL4lcXppVU7/5UNx/oGxPIj0hATsaN9VaSoIKXz2tZ0/k5+bIexo+Bi/S1+npCG/fQXtJAlbo4m9r2AhpCl/gJ+3FS3TsNIaJ1IVnpN934LS8BYg+eY2v6m1b0wNmds4YMmqFvEXNudi7vMOIVvym4P0qlj3hzfYrKtIWs9I4NW0a/IxMEEqJxlTXzZY9XC0tcX/vHnmvikGF6Di6ExICPxIpWVENoZLrdGL8OLxTcNvmbUEB+nnN4kMm1CO7YXOEvAXYEX4cVkx41GNrwkQ6ZdZmeYsaik89dDQW+w+dw8FDsdi3/yzi4pLlrcok6fQpBDlUY96Pjdb1CmAeUaS7BwrevJH3rBhUCJHmv87Fwd5uvG0TUtX+/UWnhMoB1tZIOHCQ76fU3sTpU9fyYRgjm16YOU8dm/svre7tQJ1CfXnY27JVumfK6BP5WVk44OyivYQEFSbYQGZVk44fl/csCa0c9+/WfViwLIgnY8vK1o+Ioo9RIURKJEUfRyBvj1ppXHx71sYx4+5wTupLeU/lsXFNGMxsKR7WBYOHL3vfq7mciZLGSEmkZrau2OKv9HHPj3N13VomUOb1vF8MWir+RsY44TOm1B7dU2dvoGnbEahk1gO/mnXnccOdnSbj0uU78h76S4UR6VtmJk9OmMRdXPXFZzcCuxko8/25+fPlPZVHxK4jsLJ3ham9O7r0miovOwHMmruVj6HyDiF7N+wMP8nr9ZWUmzcQUqcugiy1O4sC2fuw+g2QelfdaSYh+T6PHj3laWN+NemOZm2Go323iawZ4Mbed0OrdqP53Fl9psKIlMhIfIjtTZvxdUs1bwJaoiDIzgGPoqLkPZXFxbNX4VjXC2YO7rxnNuHRM14/ZsIajbhdd0TFXOL1+gg1SSI9+2gvFUKFhsxMTEvtiacIsHFT1uKH3zuhd9+5iH+YjHTWDg+POAmaF1yJWdVtO6PwMjUD9x8k6WUYZIUSKXE7KBB+5uZ81TXNm4G69ne3+wvZzyQBKImE+4lo3tpban8yQcbKwzCqbIA0BFOtvher1991UC6vWcPFSKJ836Nrz9xc5voecHJGXlamvKd2z8Hx01f57J/ajQchLv6xXCux2X8fa8c78YWv/uo8HnWbDIH7gHnYsSeGr1qnjVJ7JCqgSIvy83F08EBsZW7v+7VMqbAbg8ZOT06YyFxjZV2w7PR0dO85gXce0bQz6hShtlkv99nsBqW8uu5o0HwYbt9LlD+hL0i/c9LJMwipXgPBlpr9BVX5Wi/B1RyQfOYU3684r1/nwcltBp8f6h8UKdeqOXDoLF9YmSa48zm9rJ36X+Mu/HekubWUVyr6+GU8fUbusBCpIlBdhtS7d/gYqTRQLvf2sqc29fb6W1nidmiIvKcyePe2EIOHLeBWk0S59t89yM59jb+6TuTT0CjDQqu/KEP9C/kT+kP28+fY06EjAsmKagiU+gq2mhjjwqLF8p4loURrlcy7w76OF4K3HdV6uL599xY+rDnwq0kP1o6fgogDp7nb6+E1D7Qk5E/GXdlne6JGPS9cvlK8rassKpwlVXEnLBT+FsztZcLUvDmCWF1I7Xp4dklq3ynFqM6dv5X35NKMlulzNuPp85do2mY4D6wnoXbqNhlpr1QuobJR/aRvCwsQM3o092B4J57GdaAhmL09e+BNRrq8d0mWrwpjrr4Hs5TOPAVN/6GLcP6ClPqULCT9XjxZOGuLqqDpe0eiYzHM52/UbDCAL5Cl9FzNFVaklCkuZswYvjKX5g1CLrA/e6rv7dIZuewprxT8aUzUvjcX6eCRy3HtRjzqsnYYXzWNWVdn5vrSDagPqCRxdcM6+FOQiY12/0Ag83BCa9bC04sX5T1L50LsbQwYuping/kvs44Odb0wbdYmdHeejioWPbE1YJ+8Z0khJiY9QQ7zSJROhRUpkf30GXa3awd/U+0exVAmWnq6R7OnfCFrw0p8n6etKoY3KvI07JibRrNhuveewdqlZ7glsKMsgewGpRtVn0g4dIivzB2k1Q61Z56NLfxMLXBjU8noqdJ4x1zb/ZFn0M1lKn63dOJjpTTRvXHL4bh3X21F9ZUKLVLi0ckTCKpenS9CqylUerr7m5jj4oqS8bDfEpVIb166hdr1vWBezQPN/xzNXL3tqFGfibQmpet0xfgpulN+KpGUmzexvUnjEvHU1HnnX4U9HEf5oEjOHVwaunLm0vxa34D9PKN/FWvKhuiBPztNQFDoYeS+1t9QwgovUuLqxg3Mmprxp7jmTRNsbQV/K2vc3RYm7/n9eJKYhDZtR3KRUob7QcOW81XAebQRE+mCpcHynsomK/kJwjt2RCAfD1WHaFKhZkZ4x07IfqY9cV2TG7cesgfSWnTtNQX9Bi9EYMgh5ORou6zPnqVi0fIg1G48AD8zF9iICdbZfSYOH419/9DTJ4RIGUVFBYj2GQs/9hQv3oFBHUmhjo54fOKEvPf3ITcrC+69p8GUubvVanuh5V8+vP3FRVrVFRs275X3VC552dk44uUFX+oH0JzdYm+PAHP2O9erh+eXSw/IiI65hNqNBuKnyl2Y+LrhF9NuqGLVEx5ec3WuvUpDUmMnreGdSyRWKwd3DPReioRE5Y2Ff4gKL1LVczUn5QUiundjbVEKwte4gVihNuuOZs2RcuOGvPd34F0Rxo1Zzsf6KKlYtbr92Sstj9iXjwWG7YqWd1Qmb4sKcXLKFPgZsd9XIy43lNqhVlYIsLHB/d3SWjW6bB1NcG/YaiiPy+3LLOjq9XvgNWghO3dX/GraA2595yCr2IR3FafOXEXfAQtQyaIHbBzdcfuOfmVIFJZUgxc3byCscSMEMteXbh4toZqYYE+79shIkAIGvofT9PcSXx5ob1dbWqpfJVLKhE+unFKh3+rCsqW8Q6j4kBefI8rc3EvLl0s76yAvPx/9hy7Bfyp3xnCfFXgt98jSmjcrVm/n48Q0VS98X+mxyxQOGBh6CKE79G9lOSHSYvBeR4dqCCwW/UKFenz3O/diVldyrb61UEMDw9kN6QZa+0WVr4g6jui1tKURlcD1zf/C39KSW0ztKC871sSogphRo1GokbupOBu3hPMeW1orKOWlatxU+vVppXMn91n4qUoXrFyzg9cZGkKkOrjp7wc/C0sEaU1royINzRz07IPXr+Spbfxe+TZyPXr4JKo6evCAehImz8rg6MlTed64+VDeS1lQ9FYAs5bSQ0/tnVB8LvUBRLq7fzDX1NlzN9j59kFly56YPnuLXKuGOoJ6M1eX2qfbdirb5f9UhEh1QBf+wsKF8KXcSMUC8aWnvxGODBmEvMxvG+Fz++Yd1G3Yj+fYVVlSykTfuNUIJLA2m9KI378PQQ4OCGQPPOoc0vwdefOhfTtkPfpwvHHMicto1GoYKlv34stiePv8zWe6qNgfeZYvatW4lTeePFPunODPQYi0FArz3uDExIlSRBITqlYblaZPMYsaM3IkCnKkuZ3fwqCmPn+Odh1G8/E/lUhpGf4/aTGnF8rKfPjw4EGEOtZCEE0LtFeLU5pob4ptzZog5bo62/6HSEh8gpHjVvCgjZ9NuvO5oxSLm/DoKVq398GvzIr6+kvZNQwRIdIPkJ+diWPMYvIeSVt77fYUEy71BJ8YNw4Fr+Vxuq8s0vzXOejfdxZosWGVSGn4pYfrDGQrKFVI4pHDCKlZC4Hm1AGn8ZuxQgEMYbXrIOlk+Seoh+08hoYth/HhF+owa9luFJ+KNnr8ahQVGW4OXiHSj5CbmoJD7h7FMjpIhVzhEkL9qhRh2sRVPH5XEmlf0NKE/QYv1hmB8+1QP50So6J5dgXqIS8erBBobo4Qx5pIYCL+GE+epuC5Du/gfnwyBo9YCmNrJ1SxduY9u//6quJzDRMh0jKQ+TQZEU5OUrCD5iA8FRvK4Svl3yn8Brlg16wM5sKkJNckVJq+RpZECZAFDWZWMsCs2LQzVoJYuzSQtUvvh4fLe+vmfOxNeA1dhMbMpW3Rzgejxv+D2Mt3tR5ChYWF8As6wNdepRkwtErcpOkbdYraEBAiLSMZSYnY262b5PoWuwGDbW3gb2yC46NG4k36112YNnz7YVizdqhdzX48ny4JlqZbfW/iIyIQVrNmyXhcVigumpLA3Q7+cOgidRJVb9AfPxl14W3tKpZO+LFKZ1Sr64VLOuZ83rmbCK8hi1CZWdVKpt3xZ8fxOHT0grzVcBAiLQfpiQnY26ULz1wXqhE1wwu7CSnc7fCAgXj9UqOX8QvPVTx3/BJq1vGCbQ1PHtRAnSkr126Xt34f7u7YyfPkUhtU6zdhhSxogG1V3A4MkPfWzdNnL9Hyr9E8Kmj81LU4ceoqgsIOo22HMRgychkyMnV7KWRVN23dh1qNBvKpalbV3DB73lbk5hpGOk9CiLScpD+MR3iXzsxy6nB9aXiGCZVy/GYma+fb+VIk3n6Axk0GwrRqb1hWd+PL4G8N/H49mzd9/RDE2p58mEXzt2B13MVlvxElJ1dRWoD7JtaupICEPv3nM9dWnV0/NTUdWdkfb0ZcvR4HN685zPJ2hEf/eXhjQAm0hUjLger2Skt4yITaVQ7I17wxWeFCNWaucXekxt2TP/HlOn5z2E3r4jwF9vX6oVbjgXy62v6D6tW9vxWUzeDi3ysQYGktpeDUGmaRJiaQQG8Hh8qfKF2gxMTpG/DD752xfOXHZxxdZG3UmBMlA/Fzc99gs38E7t3XjxXzyooQ6SeSkcjaqD17MkGaMGEWC3ioasdd4l1//IGnF79sTC11oMTdS+R5ea5di8OVa/eQnvFtgyoKcnNwevp0+JmaI9i6uAWVenGDHOxxO7RsAiUWLw9mVrATnPvMxpu80ueS0gyWJq2Hw66WB6KPfzxzgyEgRPoZZD15gkgPDybUKjqEWhUBJsYIqVsP8Qf1P7O8yhfIfZmCY0OG8iU7KFg+uJgFDaSe3Vp18CBiP9+fIIF+TKTnL95mwvOEkZUTlq1Si7s48fGPecLrn0268aUgkx7rX/K18iJE+pnkprzAsUEDeVu0eK4eKgFm5gio5oCbfv4at+mHb1il8uruHezv2Ys/lEJtpWlmmudKU/q2NWiAxOhPi6GdMXczfjXvDgsHN6xev6tUYd+8k4DGbUbiF5PuWLxMPya7fw5CpF+A/JwsxIwdCz9jU2kqVrE4VepA8bewxrl581H4RvmJr3SRfOo0drRsxc9RSl5dTKDGJtjZoiWenjsnf6L8ZGblwHPgAvxq1oP3Ws+Yt0VrZXNNaGGmn026oKfbDIOONiKESL8QtBzf2dlz+RKLQTraabSUBa04fmzoMGQ/14fMAGordm/7Nu7C0uJWxc9L6igz4SlRXt76/EnxL1+mw3PAAvxm0QOVmevbb9AixD0o2VNOiyP/btETPXtPFyIVlAXphqaEzFfWrOVL/lNayuLWJpi1W+mGjujaDSk3rvPPfAqUvZ7GB78e0vkUsgfP+cWL4M+8A2mIRft8qB1OPdmRnp7ITPpyWfnS0zMxZtJqGNs44zfznmjSZgR8Aw+yemkyw6u0TPQbvAg/VemMRcs+PP5qCAiRfgXubd+BYMdaOjM88Ix4xsY8g/79iPLnJaKhDxJpaUsAfi4q+0lr4hwbNgy+zPoHWVlrnwMrNNeWXN+oUT54k5Ymf6os6G5nqpEfeOz8Nmzag+oNvHjbkxamatd1IkaMWYlOPSezui5o02EMkpP1e8W0siBE+oVR3YJJMcexo3kLLkhyCYvf5NShFMjqL61chaJCZSW1fhobi/BOnXgHUfHV0akEWVixNrYVzi2Yh8L8PPlTpZOTnYtjMRdR8D5598eEqubS1XsYMGwxj8/92agr/lulKw96+KPzOFxh2yoCQqRfkZd3biGiRw/uEuq82a2YNTI1xbGR3shKVsYS+XeDghFWh7U/mQXVPl7JI+DB89Udccuf3MwPiE3elPsmD2MnruFzPjdtLY/noP3dtHzEP2t3YvrsTfh3awSeGWgwvS6ESL8a0k2W/eIZokaO4Mm2gou5jcH0Skm4mYjD23dE8pnT/DMSZbc2XwJKYXJq+gyei4ivh6NxnLwwN93X2Ag7W7TAozIOsVCQBWVSoLZjvaaDEX3isrxFUB6ESL8Bhcyd5SF0zJoGMje3eDuVhjQCTMwQVMMR17Zs0opd/Ra8uHYVEc69WBuTtT+LZfOjY6VhJQqB3OfUi69I92Gkh0taeha8hizkFvTPjuNw+Wocr/9SD5+PBUcYEkKk35AH4XsQ1rAhApjlpFk0wcXESj2ofsyKRY8ehazHXydAX5O3b4twKyCIJ6UOoIzyfPxTu9BaLf7mFjg5cRJevyqbi/n0eSp695uDShY9YeHgju27j8tbBJ+CEOk3QPOZ//L6dexnFokilIJtSvaa0lIXflWMsavtH0g4ekT+1JdCfSTZT57wVeX8zci9peEicr/VDw1Ke0K5iIJq1MD1LZvf9yZ/zII9SnrBF+j9xbQ7X46QghL+6jreIBZO+l4IkX4HyCKdmTYVgTQZmhJ1FbOoVGj4JpC9nlu8+INrdH4KCUeOYPdf7XlGCZqwrvr3aTU5eg3ic2ONsbNtWzw6XnYrePtuItp3n4j//N4J7v3mYeee42jcegTPSURCVWJGQ31AiPQ7cjc0FKH168OfAvFLDNPYI8jahqcV3d+rF55e+PyMA6/T0nB+3nwmfjtuJbX/PalQFgU/9oA4OswbGYnqKV9laQPuCD/G2qBd4eIxC8+eS65x1InLcGzQH78Yd0Vnp8l48jSV1wvKjhDpd4YWKNrXs6c0q8S6pPurCn4IrlkTV1av/uSEZ9RzHNGDptYZy0m/Na23vdx5ZcLd26sbNqCooPSM8qVB0+j2HjhVIv8trR1qX8eTByW49JmDl6lfN8WMoSFEqgBo+OPMnDkIYO3RQB05gqiQhSOLSxnfn8WqrerH7Bu5yheXLkVwters8+y7dQRWhDCL7c/awXs7dcLj05rDQB8mLz+Pu7jXbj5A1kdSiu7cEwMbxz6srdoDnv3n895fQdkQIv2uaEvsfsQ+7GjVilu7YFsdYmJtRR7BxKzq5ZWrkJela7K3+juTz5zFvh5OPHyvxCLJvNjzxGEBVlY4NXEKcsoR+E/LPzgzt5ZWKbOs4YaOPSYiKkY1Dqr70eEffBAW1Xqjklk3DBm5HNnZ+jkj6FsjRKowKDULxczSbJpAXUEFrPBIJeaaHujljGQdSaZzXrzAuYXzEcKsZ4AJa3vqsJ48Z7CREXY0a4G43TR3syxIe+0MPw7bWsx9Ne6G2o0HMle2H3417g4rBzecOPPhrPS0jiol9KYZLKPH/4PXrz8eVljRESJVCJoioVjeG76+CKtfj1lOI50hhTSjhtZTCXRwwJlZs3hkE3XuxEfsx5527SRrzMRc/HNkPWmGjj97CBwbNgTp8fHyv0rH8HGpXrkah+r1vPgMlYXLApGY+BSxF+8wSzoZ7v3mIjGpNGus/u4Vq7fxgHma4TJp5gYUFHzb4A19Q4hUwby8eQOH+3sxq8rc1VKsKoUa0lBKBGtPRg0dxjP38fhandbTjrc9tzVsiFt+fijKL3/n0OQZG/Gf3zrCh1lBTZ49f8kD6csCzeSZvySQL5NfmVlUysjwtWb1GAJCpApFZXcK8/JwY/MmhNWtx8RoxN3U4uKjxGe0MBJlRwi2pR5iHeOu5uY8cujokGFIvVcy0XRZICG5ec3nsbjr/90j15YkIyO71FW3VWdWWPQWU2dtwu/mPTCTifTrzo/Vb4RI9YSU69dxpP8ALjS+poqdFBVUXIzFC4+7Za7v9saNcTvAH2/LuWZMystXzPLJ0UZMXzSf8yfjrujqPB2paeqhlEdJz3ky64HDlqBZ25Fo+dcoLGTWkgRbGlk5udgXeRr576ewCXQhRKoHqKzq24ICnmh6Z3OpBzhE17iqqjB3lwIWAtg+MT4+SLv/QP6WslFYWIRNWyPQpLU3Dh07L9cCByLPwMLeFSZ2LnDtOwdrNuzGqHH/oFHL4fjNrAd+ZgKuxKzj7xZOrM3Zgy+uRPlwBZ+OEKkCoDZaeaBUJScmTUQAa2Py3luauUJtUF5sebJqX9ZO3d2uHV+jpSzfr9lpFP/wCYaMWI5fzbrxWSy0HL6KQmaJZ87dgt8te+A31p783aIH/mvUhffW0rqh46aux9aggxg4fBlfopH2Wbtxt/xpwacgRKoASETlFSrt/ejYUR6sH2Rjx4dkKN6Whm3CGjbChcWLkfPiubRzOdgVfhyNWg3nnUPN/xzJLWcR79RRHx8FMazZuAd/dh6PFn+OwuCRyxG2MwpPn6lD/l6/ycOwUctRyawn22+cotZP1TeESBVA+QRKNk+9fz5r1yVFx+DK6rU4v2Qp7m7bhoz4h/LWskNtygnT1sO0qguqWPXCSNb2TGR1akoeY07OG9bmpHVadB//+djbzJq6wLHhADyuAEmsvxZCpALeaztg2CL8ZNQZ1jXcsdl/f2m6K5WMzJJhfidOX4WxrTOath2OdBEG+MkIkQo4EQdO82UDzexcscVftSyGWqnpaVlY8ncQLl/TTv6VX1AI/6BI/NVlPE6fU+fdpSx+vdxn4ocqnTB7vm+53XmBGiFSwXtmzNnE2pDd4dhgAC5dVo+lnjl/E12cpuJ///QHho1eriW49IxstO3ow+eQNm49nK/j8s+GXby9+mPlTujsNAnP5Wlrgk9DiLSCcf1mPB9aobVWLl3VDmp4lZqOdkxcNIzi1m8uHjNruPbfPbCt6ckFR5bx3IVb8t5qzpy7jiZthvPP0X4/MMFWMuuBPgPnIyFBTPT+XIRIDRaydmqLl/DoKSbP+hf2tfvhByYkWvKeYnB3FMs/FBV9kU8ps6rmgVbtxvBFiq2qu2Hp3yHIySl91sr9+GRMn7uFiXsen+EStuMY8j4h7FBQEiFSA4fC82jmSYMWQ7lLWrPhQPTuO4e9H4bKlk6o02Qw7sQlyntLzF7giypsm7G1C/7oNA4ntWa2lLdtKdqin4sQqQGTlp4JZ/cZTIw9YV3DA2MmrcGt29LwzNnzN1C/6VD8YtINsxf58ToVr9Iy0KHbBN4+dWOCpgAGXaS8TENm5seXyhd8HkKkBsybN3kY5L2YLxHYpr0P0jO0h0HmLwnAj8zt9Ry0kKf31IRW0bZx9EBlq15YvqrkEvlHoy5KEUaT1/C0KYKvhxCpwSK5mbdux/NEYEZMbBu3RPA6FZQpgTp7xkxcK9doM2+xP+8AcqjTF+djpQ4j6s1dsCQQFva9+WyYQcMXI/e1iM39mgiRVgBIbJRbqFErbzxOliJ/rt96gPbdJsLUxoVbxEHeS3A4SjsjIbnLnXtM4kvfu3rOxqEj5+HkPgs/Vu4Mh9r9sP7fcDl4XrQ7vyZCpAaMajzzydMUNGk7HJXMu2PyzH+xyTcCtZsM5Ams7ev2g2U1N54bl/IVRRzUTkR28vRVVK3lyQMd+H4mXdHTdTpiL33anFRB+REiNVBIoJpBB5t898GEWU0bR0+Y2DrDuroHxk1Zh5iTV1j7MhZ/dhmPX817oG2HMXiZqr3e6KKlgfivUVfe+bRwaRAyPzBHVPDlESKtIGRmZaMTc11p2KVesyE4Gn1R3iJx4hRZzL4899CO3VFyrQT19vqMX42Dh87KNYRwcb8VQqQViL37TsLU1pW5uH214mxVuHnNxf/3WwcsWhYs1wiUgBBpBaKgsBB9By3k0Ua93GchVyOdJmVi6Nl7Bu8UWrdxl1wrUAJCpBWMsxduompNTxhZOyNkm7RqGwUkzJq3FUZWzqjdaBDu3Evg9QJlIERa4XiHiVPW8QWU2nUbj+27Y9DLbQZPgWJTsw97r90eFXx/hEgrIPfiHqFu44GwtHdHFWsn/GraA91dpuH4qavyHgIlIURaQVmyPBg/sfZno5be2Lg1QuQgUjBCpBWU5KcpWL4yFPcfaC77L4ZVlIgQqUCgcIRIBQKFI0QqECgcIVKBQOEIkQoECkeIVCBQOEKkAoHCESIVCBSOEKlAoHCESAUChSNEKhAoHCFSgUDhCJEKBApHiFQgUDhCpAKBwhEiFQgUjhCpQKBwhEgFAoUjRCoQKBwhUoFA4QiRCgQKR4hUIFA4QqQCgcIRIhUIFI4QqUCgcIRIBQKFI0QqECgcIVKBQOEIkQoECkeIVCBQOEKkAoHCESIVCBSOEKlAoGiA/x/OJo9UeGayogAAAABJRU5ErkJggg==" alt="NBC Logo" style="width:56px;height:56px;display:block;object-fit:contain;"/></div>
+  <div>
+    <h1>Customer Service Team Lead Resource</h1>
+    <div class="sub">Nation's Best CPR · v1.0</div>
+  </div>
+  <div class="va-badge" id="va-badge">
+    <span id="va-name-display">—</span>
+    <button onclick="resetVA()">change</button>
+  </div>
+  <button id="manager-toggle" onclick="toggleManagerView()" style="display:none; background: var(--nbc-red); color: white; border: none; padding: 6px 14px; border-radius: 16px; font-size: 12px; font-weight: 700; cursor: pointer; margin-left: 8px;">Manager View</button>
+  <div id="brain-status" style="font-size: 11px; opacity: 0.85; margin-left: 12px;">● Brain offline (local-only)</div>
+</header>
+
+
+
+<main>
+
+<div id="manager-view" class="hidden" style="grid-column: 1 / -1;">
+  <div class="panel">
+    <h2>Pending Escalations <span id="mgr-esc-count" style="background: var(--nbc-red); color: white; font-size: 12px; padding: 2px 10px; border-radius: 12px; margin-left: 8px;">0</span></h2>
+    <p style="font-size: 13px; color: var(--nbc-muted);">VAs' escalations land here the moment they hit "Escalate to Michelle." Approve, decline, or mark "awaiting discussion" with notes. Status flows back to their app.</p>
+    <div id="mgr-escalations-list"></div>
+  </div>
+  
+</div>
+
+<div id="va-view">
+
+<!-- INPUT PANEL -->
+<div class="panel" id="input-panel">
+  <h2>New Case</h2>
+
+  <label>Situation type</label>
+  <select id="situation-type">
+    <option value="">-- Select --</option>
+        <option value="no_show">No-Show / Missed Class</option>
+        <option value="late_arrival">Late Arrival — Not Allowed to Attend</option>
+        <option value="transfer_request">Class Transfer Request</option>
+        <option value="refund_request">Refund Request</option>
+        <option value="wrong_class">Wrong Class Registered</option>
+        <option value="excused_situation">Excused Situation (illness, death, accident, jury duty)</option>
+        <option value="discount_request">Discount Request</option>
+        <option value="nbc_cancelled_followup">NBC-Cancelled Class (low enrollment, weather, staffing)</option>
+        <option value="weather_cancellation">Weather-Related Cancellation</option>
+        <option value="virtual_class_issue">Virtual Class Issue (kit, registration timing)</option>
+        <option value="waitlist_followup">Waitlist Followup</option>
+        <option value="policy_question">Policy Question (no action requested)</option>
+        <option value="complaint_no_specific_ask">Complaint with No Specific Ask</option>
+        <option value="unrecognized">Unrecognized / Doesn't Fit</option>
+  </select>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+    <div>
+      <label>Student name</label>
+      <input type="text" id="student-name" placeholder="First Last">
+    </div>
+    <div>
+      <label>Student email <span class="hint">(for Enrollware lookup)</span></label>
+      <input type="email" id="student-email" placeholder="student@email.com">
+    </div>
+  </div>
+
+  <label>What did the student say? <span class="hint">(call summary, email content, or your description)</span></label>
+  <textarea id="student-said" placeholder="Paste the email or summarize what happened on the call..."></textarea>
+
+  <button class="primary" onclick="getGuidance()">Get Decision Guidance</button>
+</div>
+
+<!-- GUIDANCE PANEL (hidden until submit) -->
+<div class="panel hidden" id="guidance-panel">
+  <h2>Decision Guidance</h2>
+  <div id="guidance-content"></div>
+</div>
+
+<!-- PUSHBACK PANEL -->
+<div class="panel hidden" id="pushback-panel">
+  <h2>Pushback Handler</h2>
+  <p style="font-size: 13px; color: var(--nbc-muted);">If the student pushes back on the policy, type what they said. The app will match common patterns and suggest a response.</p>
+  <label>What did they push back with?</label>
+  <textarea id="pushback-text" placeholder="e.g. 'It doesn't cost you anything to transfer me' or 'I already paid, this isn't fair'"></textarea>
+  <button class="primary" onclick="getPushback()">Get Pushback Response</button>
+  <div id="pushback-result"></div>
+</div>
+
+<!-- NOTE + SAVE PANEL -->
+<div class="panel hidden" id="note-panel">
+  <h2>Note for Enrollware</h2>
+  <p style="font-size: 13px; color: var(--nbc-muted);">Pre-populated from the situation type and student message. Edit before saving. Remember: <strong>if it's not in the note, it didn't happen.</strong></p>
+  <div class="note-template">
+    <textarea id="note-text"></textarea>
+  </div>
+  <div class="save-bar">
+    <button class="primary" onclick="saveCase()">Save Case</button>
+    <button class="escalate-peer" onclick="showEscalationPeer()">Transfer to Shift Team Lead</button>
+    <button class="escalate-michelle" onclick="showEscalationMichelle()">Escalate to Michelle</button>
+    <span class="save-status" id="save-status"></span>
+  </div>
+
+  <div class="escalation-panel hidden" id="escalation-output">
+    <h3 style="margin-top: 0; color: var(--nbc-red);">Escalation Template</h3>
+    <p style="font-size: 13px;">Copy this and send it via Teams to your escalation target:</p>
+    <div class="escalation-template" id="escalation-text"></div>
+    <button class="secondary" onclick="copyEscalation()" style="margin-top: 12px;">Copy to Clipboard</button>
+  </div>
+</div>
+
+<!-- DAILY LOG -->
+<div class="panel">
+  <h2>Today's Cases</h2>
+  <div id="log-summary" style="font-size: 13px; color: var(--nbc-muted);">No cases logged yet today.</div>
+  <table class="log-table hidden" id="log-table">
+    <thead><tr><th>Time</th><th>Student</th><th>Situation</th><th>Resolution</th></tr></thead>
+    <tbody id="log-body"></tbody>
+  </table>
+  <button class="secondary" onclick="downloadLog()" style="margin-top: 12px;">Download Today's Log (JSON)</button>
+  <button class="secondary" onclick="clearLog()" style="margin-top: 12px; background: #6b6b6b;">Clear Log</button>
+</div>
+
+</div>
+
+<!-- SIDEBAR: MY KPIs + POLICIES REFERENCE -->
+<div>
+
+<div class="panel policies-reference">
+  <h2>Quick Reference</h2>
+  <p style="font-size: 12px; color: var(--nbc-muted);">Tap any section to expand. Grace is intentionally NOT in this reference — think before offering it.</p>
+  <div id="ref-content"></div>
+</div>
+
+</div>
+
+</main>
+
+<!-- FIRST-RUN MODAL -->
+<div class="modal-bg" id="name-modal">
+  <div class="modal">
+    <h2>Welcome — first time here?</h2>
+    <p>What's your name? We'll use your initials on every note so it's clear who handled the case.</p>
+    <label>Your first and last name</label>
+    <input type="text" id="va-name-input" placeholder="First Last">
+    <button class="primary" onclick="saveVAName()" style="width: 100%;">Save and start</button>
+  </div>
+</div>
+
+<script>
+// === EMBEDDED POLICIES (single source of truth from policies.json) ===
+const POLICIES = {
+  "metadata": {
+    "source": "NBC_Knowledge_Base.docx v1.0 May 22 2026",
+    "extracted": "2026-05-24",
+    "note": "Single source of truth for VA Decision App, phone agent, and email autoresponder. Update KB doc first, regenerate this file."
+  },
+  "company": {
+    "name": "Nation's Best CPR",
+    "phone": "434-386-7910",
+    "alt_phone": "833 33 MY CPR",
+    "tcs_url": "https://nationsbestcpr.com/terms-of-service",
+    "signature_block": [
+      "Customer Service Team",
+      "Nation's Best CPR",
+      "434-386-7910",
+      "833 33 MY CPR",
+      "LIKE us on Facebook!"
+    ]
+  },
+  "cost_structure": {
+    "red_cross_listing_per_section": 55,
+    "instructor_fee": 110,
+    "facility_rental": 50,
+    "per_certificate_processed": 10,
+    "total_base_cost": 225,
+    "explanation": "Before any student walks in we've already paid about $225 in fixed costs. That's why a no-show or last-minute change costs us real money."
+  },
+  "situations": {
+    "no_show": {
+      "label": "No-Show / Missed Class",
+      "description": "Student didn't complete class \u2014 didn't show, arrived too late and was turned away, or didn't complete required online portion before in-person class.",
+      "policy": {
+        "text": "Per our Terms & Conditions, once a class begins there are no transfers or refunds. A missed class does not constitute services not received, a defective service, or merchant non-performance.",
+        "source": "T&Cs \u2014 Less than 24 Hours' Notice / Once a class begins"
+      },
+      "why": "We've already paid the Red Cross $55 listing fee, the instructor $110, and the facility $50 \u2014 about $225 before the student walks through the door. When they don't show, all of that is sunk. The student still needs certification, though, so we have a way to help them get it without absorbing the loss a second time.",
+      "staged_response": {
+        "step_1_state_policy": "I understand you weren't able to make it to your class. Unfortunately, per our Terms & Conditions that were agreed to at registration, once a class begins there are no refunds or transfers and if a student does not complete class the class fee is forfeited and a new registration with payment is required. Those policies are in place because of the fees we pay upfront to hold classes.",
+        "step_2_pause": "[Pause. Let them absorb the policy. Do not jump to grace. The pause is the whole point.]",
+        "step_3_acknowledge_pushback": "[When they push back on paying again, place them on a brief hold: 'Let me check with my manager and see if there's anything we can do for you.']",
+        "step_4_grace_offer": "We definitely want to help you get certified. I was able to check with my manager and one time I can offer you 50% off your next class \u2014 so you don't have to pay the full fee again. Would you like to register for a new class now?"
+      },
+      "grace": {
+        "eligible": true,
+        "rule": "One-time per student. Not automatic \u2014 only after the pause and only if the situation warrants it.",
+        "offer": "50% off next class",
+        "valid_for_days": 30,
+        "ew_label": "NOSHOW50%"
+      },
+      "escalate_to_peer_when": [
+        "Student is escalating tone, demanding to speak to a supervisor"
+      ],
+      "escalate_to_michelle_when": [
+        "Chargeback threatened or filed",
+        "Attorney mentioned",
+        "ADA / disability claim",
+        "Student claims NBC made an error"
+      ],
+      "automatic_offer": {
+        "label": "NOSHOW50%",
+        "applied_by": "Enrollware system label",
+        "amount": "50% off next class rebook",
+        "important": "This is AUTOMATIC, not a VA courtesy. Do not frame it to the student as 'we can offer you 50% off' \u2014 it's the default for any no-show. If routine: it's already there. If non-routine (facility issue, NBC error, etc.): hold off offering anything until investigation is complete and Michelle approves."
+      }
+    },
+    "late_arrival": {
+      "label": "Late Arrival \u2014 Not Allowed to Attend",
+      "description": "Student arrived more than 5 minutes late (blended) or 15 minutes late (full-day) and was turned away.",
+      "policy": {
+        "text": "Per our Terms & Conditions, students more than 5 minutes late for a blended class or 15 minutes late for a full-day class are not allowed to attend and are required to register and pay for another class.",
+        "source": "T&Cs \u2014 Late Policy"
+      },
+      "why": "Class has to start on time for all students. Late arrivals disrupt the group, miss critical instruction, and can't pass the skills evaluation without the full content. This is the same as a no-show financially \u2014 we've paid all the costs.",
+      "staged_response": {
+        "step_1_state_policy": "Unfortunately, per our Terms & Conditions, students more than [5/15] minutes late aren't allowed to attend a [blended/full-day] class, and the original class fee is forfeited.",
+        "step_2_pause": "[Pause.]",
+        "step_3_acknowledge_pushback": "[If they push back, brief hold: 'Let me see what we can do.']",
+        "step_4_grace_offer": "We can offer you 50% off your next class so you don't have to pay the full fee again. Want me to help you find one that works for your schedule?"
+      },
+      "grace": {
+        "eligible": true,
+        "rule": "Same as no-show \u2014 one-time per student",
+        "offer": "50% off next class",
+        "valid_for_days": 30,
+        "ew_label": "NOSHOW50%"
+      },
+      "escalate_to_michelle_when": [
+        "Chargeback threat",
+        "Attorney",
+        "ADA",
+        "NBC error claim"
+      ]
+    },
+    "transfer_request": {
+      "label": "Class Transfer Request",
+      "description": "Student wants to move from their registered class to a different one.",
+      "policy_by_timing": {
+        "standard_class_24plus_hours": {
+          "rule": "Free transfer if 24+ hours before class",
+          "text": "Per our Terms & Conditions, since your class is more than 24 hours away, your transfer is free of charge.",
+          "fee": 0
+        },
+        "standard_class_under_24_hours": {
+          "rule": "Original fee lost, 50% off new registration",
+          "text": "Per our Terms & Conditions, since your class is less than 24 hours away, the original class fee is forfeited. We can offer 50% off your new class fee to re-register.",
+          "fee": "50% off new"
+        },
+        "it_14plus_days": {
+          "rule": "Free transfer for Instructor Training 14+ days out",
+          "fee": 0
+        },
+        "it_7_to_13_days": {
+          "rule": "$60 transfer fee for IT 7-13 days out",
+          "fee": 60
+        },
+        "it_4_to_6_days": {
+          "rule": "50% of registration fee for IT 4-6 days out",
+          "fee": "50% of original"
+        },
+        "it_3_or_less_days": {
+          "rule": "No transfers or refunds for IT 3 days or less",
+          "fee": null
+        }
+      },
+      "why": "We've already paid the Red Cross $55 to list the class, locked in the instructor at $110, and reserved the facility. With 24+ hours notice we can fill the seat. Less than 24 hours, we're scrambling and absorbing the cost.",
+      "staged_response_under_24": {
+        "step_1_state_policy": "I can help you transfer that class. Per our Terms & Conditions, since your class is less than 24 hours away, the original class fee is forfeited and we can offer 50% off your new class fee.",
+        "step_2_pause": "[Pause.]",
+        "step_3_handle_pushback": "[Common pushback: 'It doesn't cost you anything to transfer me.' See common_pushback in this file.]",
+        "step_4_close": "Would you like me to find a class that works for your schedule?"
+      },
+      "grace": {
+        "eligible": "Only in unusual circumstances (illness, death, accident \u2014 but those go through excused situation review)",
+        "rule": "Not automatic for routine late transfers"
+      },
+      "limit": "One transfer per student. Once a transfer has been completed, no refunds.",
+      "escalate_to_peer_when": [
+        "Already transferred once and wants another"
+      ],
+      "escalate_to_michelle_when": [
+        "Chargeback",
+        "Attorney",
+        "ADA",
+        "NBC error"
+      ],
+      "always_escalate_to_va": [
+        "Virtual A&P upgrades (shipping coordination required)"
+      ]
+    },
+    "refund_request": {
+      "label": "Refund Request",
+      "description": "Student is asking for their money back.",
+      "policy_by_timing": {
+        "standard_class_7plus_days": {
+          "rule": "Full refund granted if 7+ days before class",
+          "text": "Per our Terms & Conditions, refunds are granted to those who cancel 7 or more days prior to class."
+        },
+        "standard_class_under_7_days": {
+          "rule": "No refund \u2014 credit or transfer only",
+          "text": "Per our Terms & Conditions, since your class is less than 7 days away, refunds are not granted. We can transfer you to another class at no charge if it's still 24+ hours before your scheduled class."
+        },
+        "it_14plus_days": {
+          "rule": "Full refund for Instructor Training 14+ days"
+        },
+        "it_under_14_days": {
+          "rule": "No refund \u2014 see transfer policy by timing"
+        }
+      },
+      "first_action": "CALL THE STUDENT. Same day if possible. Do not respond by email asking questions.",
+      "first_action_why": "Many students don't know they have options \u2014 transfer, hold credit, reschedule. Calling immediately, conversationally, lets us solve the underlying problem (they need certification) before they think 'refund or chargeback.'",
+      "tone": "Conversational, curious, not defensive. 'Hey, I just wanted to follow up on your refund request and see how we can best handle your situation. Did you still need the class? Because we might have some options.'",
+      "options_to_present_in_order": [
+        "Free transfer if 24+ hours before class",
+        "Hold credit and reschedule later",
+        "Refund (only if within policy)"
+      ],
+      "auto_handle_response_only": "We received your refund request and a member of our customer service team will be calling you shortly to discuss the details and process your request. If you don't hear from us within one business day, please call us directly at 434-386-7910.",
+      "grace": {
+        "eligible": false,
+        "rule": "Refunds are not a grace situation \u2014 they're a policy or escalation decision. Don't promise refunds. Always call first."
+      },
+      "escalate_to_peer_when": [
+        "Student is angry, demands a supervisor"
+      ],
+      "escalate_to_michelle_when": [
+        "Chargeback threatened or filed",
+        "Attorney mentioned",
+        "ADA / disability",
+        "Student claims NBC made an error (wrong class booked, etc.)",
+        "Excused situation that may warrant going outside policy"
+      ]
+    },
+    "wrong_class": {
+      "label": "Wrong Class Registered",
+      "description": "Student signed up for the wrong class type (e.g. ARC BLS instead of AHA BLS, or Adult instead of A&P).",
+      "policy": {
+        "rule": "Offer 50% off NEW registration on correct course. New registration required \u2014 do NOT transfer.",
+        "condition": "Student attended original class on time with online completion",
+        "ew_label": "NOSHOW50%"
+      },
+      "why": "We can't simply transfer because the courses are different products with different curricula. New registration ensures proper enrollment with Red Cross/AHA.",
+      "escalate_to_michelle_when": [
+        "Student claims NBC told them to register for wrong class"
+      ]
+    },
+    "excused_situation": {
+      "label": "Excused Situation (illness, death, accident, jury duty)",
+      "description": "Student is claiming a serious reason for missing class that may warrant going outside policy.",
+      "always_acknowledge_first": "Express sympathy for THEIR situation \u2014 this is empathy for a personal tragedy (illness, death, accident), NOT an apology for NBC fault. 'Oh no, I'm so sorry to hear that.' is appropriate here because we are sorry FOR them, not sorry that WE caused it.",
+      "documentation_required": {
+        "illness": "Doctor's note stating student unable to attend, within 24 hours of class",
+        "car_accident": "Police report or insurance claim, within 24 hours",
+        "death_in_immediate_family": "Obituary (parent, sibling, spouse, child), within 7 days",
+        "jury_duty": "Documentation of jury duty selection"
+      },
+      "auto_handle": false,
+      "always_escalate_to_va_review": true,
+      "auto_response_only": "I'm so sorry to hear that. A member of our team will reach out shortly to talk through your situation with you personally. If you need to reach us in the meantime, please call 434-386-7910.",
+      "escalate_to_michelle_when": [
+        "Documentation provided is questionable",
+        "Student is requesting refund outside policy and both Team Leads agree it's warranted"
+      ]
+    },
+    "discount_request": {
+      "label": "Discount Request",
+      "description": "Student or group asking for a discount.",
+      "policy": "All discounts only valid on full-price classes (not already-discounted rates).",
+      "why": "Discount requests require verification of proof (group size, healthcare worker, etc.). Don't promise a discount without verification."
+    },
+    "nbc_cancelled_followup": {
+      "label": "NBC-Cancelled Class (low enrollment, weather, staffing)",
+      "description": "Student needs to be transferred because NBC cancelled their class.",
+      "policy": "All transfers free. Student loses nothing.",
+      "contact_cadence": "At least 3 contacts per day (call, text, email) until student transferred.",
+      "ew_labels": [
+        "NBC CANCELLED",
+        "TRANSFERRED (once new class confirmed)"
+      ]
+    },
+    "weather_cancellation": {
+      "label": "Weather-Related Cancellation",
+      "description": "Class location's school district or county government office is closed for weather.",
+      "policy": "NBC follows local school closings and county government offices/libraries. The school district or county where the class location falls is the standard.",
+      "important": "If class is held and students don't attend, registration is lost \u2014 new registration required. All cancellation/transfer fees still apply."
+    },
+    "virtual_class_issue": {
+      "label": "Virtual Class Issue (kit, registration timing)",
+      "description": "Issue with virtual class kit, registration after the 7-day cutoff, or virtual no-show.",
+      "key_rules": [
+        "Virtual classes close 7 days prior to training date (kit shipping)",
+        "Exception: if student already has equipment, manual registration allowed",
+        "Virtual Class Kits are NON-REFUNDABLE",
+        "Online-only courses are NON-REFUNDABLE",
+        "Virtual no-show: 50% off next class (same as regular no-show)"
+      ]
+    },
+    "waitlist_followup": {
+      "label": "Waitlist Followup",
+      "description": "Student is on waitlist for a full class.",
+      "first_contact": "Within 1 hour of waitlist registration (business hours).",
+      "options_offered": [
+        "Process payment for original class if seat opens",
+        "Find different class that works for their schedule"
+      ],
+      "no_response_cadence": "Every day until resolved (9am, 1pm, 5pm).",
+      "if_3plus_waitlist": "Notify Locations \u2014 they may create a new class."
+    },
+    "policy_question": {
+      "label": "Policy Question (no action requested)",
+      "description": "Student is just asking how something works.",
+      "first_action": "Answer the question directly if T&Cs cover it. State the policy text from the appropriate section.",
+      "tone": "Informational, not defensive."
+    },
+    "complaint_no_specific_ask": {
+      "label": "Complaint with No Specific Ask",
+      "description": "Student is upset but hasn't requested a specific resolution.",
+      "first_action": "CALL them. Don't try to resolve in email. Listen, acknowledge, then identify what they actually need."
+    },
+    "unrecognized": {
+      "label": "Unrecognized / Doesn't Fit",
+      "description": "Situation doesn't clearly fit any defined category.",
+      "first_action": "Don't guess. Escalate to peer for second opinion before responding."
+    }
+  },
+  "common_pushback": {
+    "doesnt_cost_you_anything": {
+      "trigger": "Student says transferring/refunding doesn't cost NBC anything",
+      "response": "Actually, the Red Cross charges us $55 per section to list the class, the instructor is $110, and the facility is $50 \u2014 we've already paid all of that. What we're concerned about is filling your empty seat. If we can fill it, great. If we can't, we take a loss. That's why we have to charge the [transfer fee / forfeit the class fee] when it's less than 24 hours out."
+    },
+    "i_already_paid_for_class": {
+      "trigger": "Student says they already paid so shouldn't have to pay again",
+      "response": "I understand. Per our Terms & Conditions, that fee was for the specific class we held a seat for. When a student doesn't complete the class, those costs are still ours \u2014 we've paid the Red Cross, the instructor, and the facility. That's exactly why we can offer 50% off your next class \u2014 so you can get certified without paying the full fee twice."
+    },
+    "its_not_fair": {
+      "trigger": "Student says the policy isn't fair",
+      "response": "I understand it doesn't feel fair when something comes up that's outside your control. Our policies were set so we can keep running classes for everyone \u2014 if we refunded every missed class, we wouldn't be able to keep prices where they are. That's why we offer 50% off your next class \u2014 it's our way of meeting you in the middle."
+    },
+    "i_want_to_speak_to_supervisor": {
+      "trigger": "Student is demanding a supervisor",
+      "response": "Absolutely, I can connect you with our Team Lead. Let me get you transferred over \u2014 one moment.",
+      "action": "TRANSFER TO PEER TEAM LEAD. Do not transfer to Michelle unless peer Team Lead is unavailable."
+    },
+    "i_didnt_get_the_email": {
+      "trigger": "Student says they didn't receive registration confirmation",
+      "response": "Let me check what email address we have on file for you. Sometimes the confirmation lands in spam, or there's a typo in the address. I can resend it right now \u2014 and the access link is good for one hour, so please click it as soon as you see it."
+    },
+    "you_have_to_refund_me": {
+      "trigger": "Student is demanding a refund",
+      "response": "I hear you. Let me make sure I have the details right so I can help \u2014 what was the class you were registered for and when was it scheduled? Once I have that I can walk you through what options we have available."
+    }
+  },
+  "escalation_protocol": {
+    "to_peer_team_lead": {
+      "purpose": "WARM CALL TRANSFER when the caller requests a supervisor/manager",
+      "when": [
+        "Caller explicitly asks for a supervisor, manager, or someone higher up \u2014 that's the ONLY trigger"
+      ],
+      "how": "Use the 'Transfer to Shift Team Lead' button in the Decision App. Fill in: who's calling, what they need, what you already offered/said, and why they're asking for a supervisor. The receiving Team Lead opens their app, sees the warm-handoff note, and picks up the call ready. Tell the caller: 'Let me transfer you to the shift team lead \u2014 they'll be with you in just a moment.'",
+      "what_this_is_NOT": [
+        "NOT an escalation of decision-making authority \u2014 you and your peer are equals, neither has more authority on policy",
+        "NOT a substitute for individual judgment \u2014 every situation OTHER than 'caller wants supervisor' is yours to decide alone",
+        "NOT collaborative case-handling \u2014 casual 'have you seen this before?' questions belong in Teams chat, not a formal transfer"
+      ],
+      "accountability": "You're accountable for everything you did before the transfer. The receiving Team Lead is accountable for everything they do after picking up. Individual ownership of decisions, both sides."
+    },
+    "to_michelle": {
+      "when": [
+        "Chargeback threatened or filed",
+        "Attorney mentioned",
+        "ADA / disability claim",
+        "Student claims NBC made an error",
+        "Decision outside policy needed (after you've investigated, drafted what you offered, and prepared a recommended resolution)"
+      ],
+      "how": "Use the Escalation panel in the Decision App. Submit a COMPLETED case package: what happened, what you offered, what you investigated (instructor contact + facility contact + history), and YOUR recommended resolution. Michelle is the FINAL APPROVAL \u2014 not the decision-maker. Cases submitted without investigation + recommendation will be pushed back.",
+      "expectation": "Michelle responds same day."
+    }
+  },
+  "note_template_structure": {
+    "format": "{initials}-{situation_short}: {one_line_reason_for_contact}",
+    "required_sections": [
+      {
+        "section": "Reason",
+        "fields": [
+          "Source (call / email / text)",
+          "Time received",
+          "Description in student's own words"
+        ]
+      },
+      {
+        "section": "Class details",
+        "fields": [
+          "Auto-pulled from Enrollware: student name, current class type/date/time/instructor, payment status, previous notes"
+        ]
+      },
+      {
+        "section": "Handling",
+        "fields": [
+          "What VA said/offered",
+          "Whether grace was offered (yes/no/N/A)",
+          "Whether payment was taken (last 4 of CC, amount)",
+          "Confirmation email sent (yes/no)"
+        ]
+      },
+      {
+        "section": "Resolution",
+        "fields": [
+          "Final outcome",
+          "New class details if transferred",
+          "Confirmation email content if sent",
+          "Next steps if any"
+        ]
+      }
+    ],
+    "chargeback_shield_principle": "If it's not in the note, it didn't happen. Every interaction needs all four sections populated. Banks ask for proof of what we offered and how the student responded \u2014 this note is that proof.",
+    "example": "rc-noshow: Student called to dispute no-show charge\nReason: Call received 10:32am 5/26. Student says she missed Saturday's Adult CPR \u2014 overslept, didn't get to class. Wants a refund.\nClass details: [Auto from Enrollware: Maria Lopez, Adult CPR 5/24 9am, Instructor Sarah Chen, $99 paid 5/15, no previous notes]\nHandling: Stated T&C policy (forfeit + new registration required). Pause. Student pushed back ('I already paid'). Brief hold to 'check with manager.' Returned and offered NOSHOW50% on next class. Student accepted.\nResolution: Transferred to Adult CPR 6/7 10am Instructor John Patel at 50% off ($49.50). Took payment CC ending 4421. Confirmation email sent to maria.lopez@email.com at 10:48am."
+  },
+  "nbc_error_indicators": {
+    "description": "Patterns in the student's message that suggest the no-show / missed class may actually be an NBC error or facility issue, NOT a routine no-show. When detected, the app surfaces a warning and recommends NBC-error handling.",
+    "phrases": [
+      "told by staff",
+      "told by the staff",
+      "told by a staff",
+      "told me there was no",
+      "told her there was no",
+      "told him there was no",
+      "no class was being held",
+      "no class was held",
+      "no cpr class",
+      "no class scheduled",
+      "no one was there",
+      "no instructor",
+      "instructor never showed",
+      "instructor didn't show",
+      "instructor didn't come",
+      "couldn't find the class",
+      "couldn't find the room",
+      "couldn't find the classroom",
+      "couldn't locate",
+      "couldn't get in",
+      "couldn't enter",
+      "couldn't access",
+      "uncooperative staff",
+      "uncooperative",
+      "wouldn't help",
+      "wouldn't let me in",
+      "wouldn't direct me",
+      "wouldn't tell me",
+      "wrong location",
+      "wrong address",
+      "wrong room",
+      "no signs",
+      "no signage",
+      "no directions",
+      "told it was cancelled",
+      "told the class was cancelled",
+      "told to leave",
+      "couldn't use the main entrance",
+      "couldn't use the entrance",
+      "main entrance",
+      "didn't assist",
+      "did not assist",
+      "wouldn't assist",
+      "had to figure out",
+      "had to find on my own",
+      "no one to direct",
+      "no one knew about the class",
+      "facility was closed",
+      "building was closed",
+      "doors were locked",
+      "door was locked"
+    ],
+    "handling": {
+      "headline": "Potential NBC Error / Facility Issue Detected",
+      "subhead": "This may NOT be a routine no-show. Service delivery on our side (or our facility partner's) MIGHT have prevented the student from attending \u2014 or it might not. We don't know yet. Get the student's full version, research the situation, and only THEN decide what's appropriate. Don't offer anything. Don't apologize. Both come AFTER we know.",
+      "steps": [
+        "LISTEN FIRST. Open the call with a NEUTRAL acknowledgment, not an apology: \"Thank you for reaching out \u2014 I want to make sure I understand exactly what happened. Walk me through it from the beginning. When did you arrive, who did you speak to, what were you told?\" Let them talk. Take notes. Do NOT apologize, do NOT offer anything yet \u2014 we don't yet know what occurred or who's at fault.",
+        "SET CALLBACK EXPECTATION. After hearing their version: \"I need to investigate what occurred \u2014 can I call you back within [2 hours / today / by end of business]?\" Do NOT promise a resolution, an offer, a refund, a rebook, or anything else on this call. Your only commitment is that you'll find out and call back.",
+        "INVESTIGATE on your own. (a) Call the instructor for that class \u2014 what do they remember? Was the class actually held? Were there facility issues? Did anyone matching the student's description try to attend? (b) Call the facility / location contact \u2014 was the staff trained on hosting our students? Is there a pattern? (c) Check the student's history in Enrollware \u2014 any prior issues, prior NOSHOW50% applied, prior complaints?",
+        "REMEMBER: 50% NOSHOW50% is already automatic. If the student is marked no-show in Enrollware, the 50% rebook discount is already there. You do not 'offer' it as a courtesy \u2014 it's the system default. The reason to investigate is to decide whether the no-show mark was even correct in the first place (and whether the student deserves something MORE than the auto-50%).",
+        "DOCUMENT EVERYTHING in the case note \u2014 what the student described, who you contacted, what they confirmed or denied, the facility name, the time of day, the staff member if known. The note is the chargeback shield.",
+        "DRAFT YOUR RECOMMENDED RESOLUTION before escalating. Possible recommendations: (a) leave the auto-50% in place (routine), (b) remove the no-show mark + free full rebook (facility prevented attendance), (c) full refund (clear NBC error), (d) refund + facility relationship review (pattern of issues). The recommendation should match what you found in step 3.",
+        "ESCALATE TO MICHELLE WITH COMPLETED WORK \u2014 for final approval. Submit: what happened, what you investigated, what you found, what you recommend, and the decision you need. Michelle's role is to approve, push back, or discuss. Not to make the call from scratch.",
+        "ONLY AFTER MICHELLE APPROVES, call the student back with the resolution. If investigation confirmed NBC or our facility partner was at fault, NOW you apologize as part of the resolution. If investigation found the student's account didn't hold up or it was a routine no-show: deliver the policy outcome (auto-50% rebook or whatever was decided) without apologizing for something we didn't cause."
+      ],
+      "what_not_to_do": [
+        "Do NOT apologize on the first call \u2014 or in any written acknowledgment before investigation is complete. An apology is an admission of fault. Apologies happen AFTER investigation confirms WE made an error, not before. Use neutral acknowledgment instead: \"Thank you for reaching out, I want to understand what happened.\"",
+        "Do NOT offer ANYTHING \u2014 no rebook, no refund, no 50% off, no apology-discount \u2014 on the first call. Your only commitment is that you'll investigate and call back.",
+        "Do NOT default to the standard no-show staged response. The standard response assumes a routine no-show; this case isn't.",
+        "Do NOT promise the facility issue will be fixed \u2014 that's not your call to make on the spot.",
+        "Do NOT escalate to Michelle as 'what do I do?' \u2014 that's not what escalation is for. Investigate first, recommend, THEN escalate for approval.",
+        "Do NOT 'offer the 50%' as if it's a courtesy \u2014 it's the system default for any no-show marked in Enrollware. Mentioning it to the student as 'we can offer 50% off' frames it as a gift when it's the floor."
+      ],
+      "key_principle": "GET THE VERSION \u2192 RESEARCH \u2192 DECIDE \u2192 APPROVE \u2192 COMMUNICATE.  Never offer and never apologize before research."
+    },
+    "subhead": "This may NOT be a routine no-show. Service delivery on our side (or our facility partner's) MIGHT have prevented the student from attending \u2014 or it might not. We don't know yet. Get the student's full version, research the situation, and only THEN decide what's appropriate. Don't offer anything. Don't apologize. Both come AFTER we know."
+  }
+};
+
+// === BRAIN CONFIG ===
+// Set BRAIN_URL to your Replit deployment URL when you go live.
+// API key matches the NBC_VA_API_KEY env var set in Replit Secrets.
+const BRAIN_URL = "http://localhost:8765";
+const BRAIN_API_KEY = "DEV_VA_KEY_set_NBC_VA_API_KEY";
+let BRAIN_ONLINE = false;  // updated by checkBrain() on startup
+
+async function checkBrain() {
+  try {
+    const r = await fetch(BRAIN_URL + "/health", {method: "GET"});
+    BRAIN_ONLINE = r.ok;
+  } catch(e) { BRAIN_ONLINE = false; }
+  const ind = document.getElementById("brain-status");
+  if (ind) {
+    ind.textContent = BRAIN_ONLINE ? "● Brain online" : "● Brain offline (local-only)";
+    ind.style.color = BRAIN_ONLINE ? "#7fffa1" : "#ffb066";
+  }
+}
+
+async function brainCall(method, path, body) {
+  if (!BRAIN_ONLINE) return null;
+  try {
+    const opts = {
+      method,
+      headers: {"X-NBC-API-Key": BRAIN_API_KEY, "Content-Type": "application/json"},
+    };
+    if (body !== undefined) opts.body = JSON.stringify(body);
+    const r = await fetch(BRAIN_URL + path, opts);
+    if (!r.ok) {
+      console.warn("brain call failed", method, path, r.status);
+      return null;
+    }
+    return await r.json();
+  } catch(e) {
+    console.warn("brain unreachable", e);
+    return null;
+  }
+}
+
+
+// === NBC ERROR / FACILITY ISSUE DETECTION ===
+function detectNBCErrorIndicators(text) {
+  if (!text) return [];
+  const lower = text.toLowerCase();
+  const phrases = (POLICIES.nbc_error_indicators && POLICIES.nbc_error_indicators.phrases) || [];
+  const hits = [];
+  for (const p of phrases) { if (lower.includes(p.toLowerCase()) && !hits.includes(p)) hits.push(p); }
+  return hits;
+}
+function renderNBCErrorWarning(hits) {
+  if (!hits.length) return '';
+  const data = POLICIES.nbc_error_indicators || {};
+  const handling = data.handling || {};
+  const headline = handling.headline || 'Potential NBC Error / Facility Issue Detected';
+  const subhead = handling.subhead || 'This may not be a routine case.';
+  const keyPrinciple = handling.key_principle || '';
+  const steps = handling.steps || [];
+  const dontDo = handling.what_not_to_do || [];
+  let html = '<div style="background:#8b0000;color:white;border-radius:8px;padding:16px;margin-bottom:18px;box-shadow:0 4px 12px rgba(139,0,0,0.3);">';
+  html += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><span style="font-size:22px;">&#9888;</span><strong style="font-size:16px;text-transform:uppercase;letter-spacing:0.5px;">' + escapeHtml(headline) + '</strong></div>';
+  if (keyPrinciple) html += '<div style="background:rgba(255,255,255,0.22);border-radius:6px;padding:12px 14px;margin:0 0 12px 0;font-weight:700;font-size:14px;border-left:4px solid white;">' + escapeHtml(keyPrinciple) + '</div>';
+  html += '<p style="margin:0 0 12px 0;font-size:13px;opacity:0.95;">' + escapeHtml(subhead) + '</p>';
+  html += '<details open style="margin:0 0 12px 0;"><summary style="cursor:pointer;font-size:12px;opacity:0.85;">Triggers detected (' + hits.length + '): click to expand</summary><div style="font-size:12px;padding:6px 0 0 12px;">' + hits.map(h => '<span style="display:inline-block;background:rgba(255,255,255,0.15);padding:2px 8px;border-radius:10px;margin:2px 4px 2px 0;">' + escapeHtml(h) + '</span>').join('') + '</div></details>';
+  html += '<div style="background:rgba(255,255,255,0.1);border-radius:6px;padding:12px;margin-top:10px;"><div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;opacity:0.85;margin-bottom:8px;">Handle this way:</div><ol style="margin:0 0 0 20px;padding:0;font-size:13px;">' + steps.map(s => '<li style="margin-bottom:6px;">' + escapeHtml(s) + '</li>').join('') + '</ol></div>';
+  if (dontDo.length) html += '<div style="background:rgba(0,0,0,0.18);border-radius:6px;padding:12px;margin-top:8px;"><div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;opacity:0.85;margin-bottom:6px;">Do NOT:</div><ul style="margin:0 0 0 20px;padding:0;font-size:13px;">' + dontDo.map(s => '<li style="margin-bottom:4px;">' + escapeHtml(s) + '</li>').join('') + '</ul></div>';
+  html += '<button onclick="showEscalationMichelle()" style="margin-top:12px;background:white;color:#8b0000;border:none;padding:10px 18px;border-radius:6px;font-weight:700;cursor:pointer;font-family:inherit;">Escalate to Michelle Now</button>';
+  html += '</div>';
+  return html;
+}
+
+// === ROLE-BASED UI ===
+function isManager() {
+  const name = (localStorage.getItem('nbc_va_name') || '').toLowerCase().trim();
+  return name === 'michelle' || name.startsWith('michelle ');
+}
+function applyRoleUI() {
+  const mgr = isManager();
+  const btn = document.getElementById('manager-toggle');
+  if (btn) btn.style.display = mgr ? 'inline-block' : 'none';
+  if (mgr) showManagerView(); else showVAView();
+}
+function toggleManagerView() {
+  const inMgr = !document.getElementById('manager-view').classList.contains('hidden');
+  if (inMgr) showVAView(); else showManagerView();
+}
+function showManagerView() {
+  document.getElementById('manager-view').classList.remove('hidden');
+  document.getElementById('va-view').classList.add('hidden');
+  const btn = document.getElementById('manager-toggle');
+  if (btn) btn.textContent = 'Switch to VA View';
+  refreshManagerView();
+}
+function showVAView() {
+  document.getElementById('manager-view').classList.add('hidden');
+  document.getElementById('va-view').classList.remove('hidden');
+  const btn = document.getElementById('manager-toggle');
+  if (btn) btn.textContent = 'Manager View';
+}
+
+// === MANAGER VIEW DATA ===
+async function refreshManagerView() {
+  if (!BRAIN_ONLINE) {
+    document.getElementById('mgr-escalations-list').innerHTML = '<div style="padding:30px;text-align:center;color:var(--nbc-muted);">Brain offline \u2014 start <code>cs_brain/start_brain.bat</code> or point BRAIN_URL at your hosted brain.</div>';
+    return;
+  }
+  await refreshMgrEscalations();
+}
+
+async function refreshMgrEscalations() {
+  const data = await brainCall("GET", "/escalation/list?limit=200");
+  const open = (data || []).filter(e => ["pending","awaiting_discussion"].includes(e.status));
+  const cntEl = document.getElementById('mgr-esc-count');
+  if (cntEl) cntEl.textContent = open.length;
+  const list = document.getElementById('mgr-escalations-list');
+  if (open.length === 0) {
+    list.innerHTML = '<div style="padding:24px;text-align:center;color:var(--nbc-success);font-weight:600;">\u2713 No open escalations. You\'re clear.</div>';
+    return;
+  }
+  list.innerHTML = open.map(renderMgrEscalation).join('');
+}
+
+function renderMgrEscalation(e) {
+  const isAwaiting = e.status === 'awaiting_discussion';
+  const isMichelle = e.target === 'michelle';
+  const borderColor = isAwaiting ? 'var(--nbc-warn)' : (isMichelle ? 'var(--nbc-red)' : '#b8860b');
+  const badge = isAwaiting ? 'AWAITING DISCUSSION' : (isMichelle ? 'MICHELLE TRIGGER' : 'PEER REVIEW');
+  const badgeBg = isAwaiting ? '#fdf6e0' : (isMichelle ? 'var(--nbc-light-red)' : '#fff8e1');
+  const badgeColor = isAwaiting ? '#8a6d1f' : (isMichelle ? 'var(--nbc-red)' : 'var(--nbc-warn)');
+  const noteFieldId = 'mgr-notes-' + e.id;
+  const submitted = timeAgo(e.created_at);
+  let html = '<div style="background:white;border:1px solid var(--nbc-border);border-left:4px solid ' + borderColor + ';border-radius:6px;padding:16px;margin-bottom:12px;">';
+  html += '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;"><div><div style="font-size:15px;font-weight:600;color:var(--nbc-navy);">' + escapeHtml(e.situation_label || e.situation_key || 'Escalation') + '</div><div style="font-size:12px;color:var(--nbc-muted);">' + escapeHtml(e.student_name || '\u2014') + (e.student_email ? ' (' + escapeHtml(e.student_email) + ')' : '') + '</div></div>';
+  html += '<span style="font-size:10px;font-weight:700;padding:3px 9px;border-radius:10px;background:' + badgeBg + ';color:' + badgeColor + ';text-transform:uppercase;letter-spacing:0.4px;">' + badge + '</span></div>';
+  html += '<div style="font-size:11px;color:var(--nbc-muted);margin-bottom:10px;">From <strong>' + escapeHtml(e.va_initials) + '</strong> \u00b7 ' + submitted + ' \u00b7 #' + e.id + '</div>';
+  if (e.what_student_said) html += '<div style="margin:6px 0;"><div style="font-size:10px;font-weight:700;color:var(--nbc-red);text-transform:uppercase;letter-spacing:0.4px;">What student said</div><div style="font-size:12px;white-space:pre-wrap;">' + escapeHtml(e.what_student_said) + '</div></div>';
+  if (e.what_offered) html += '<div style="margin:6px 0;"><div style="font-size:10px;font-weight:700;color:var(--nbc-red);text-transform:uppercase;letter-spacing:0.4px;">What VA offered</div><div style="font-size:12px;white-space:pre-wrap;">' + escapeHtml(e.what_offered) + '</div></div>';
+  if (e.why_escalating) html += '<div style="margin:6px 0;"><div style="font-size:10px;font-weight:700;color:var(--nbc-red);text-transform:uppercase;letter-spacing:0.4px;">Why escalating</div><div style="font-size:12px;white-space:pre-wrap;">' + escapeHtml(e.why_escalating) + '</div></div>';
+  if (e.recommendation) html += '<div style="background:var(--nbc-light-navy);padding:8px 10px;border-radius:4px;font-size:12px;margin:8px 0;"><strong>VA recommendation:</strong> ' + escapeHtml(e.recommendation) + '</div>';
+  if (e.michelle_notes) html += '<div style="background:#fffef0;padding:8px 10px;border-radius:4px;border-left:3px solid var(--nbc-warn);font-size:12px;margin:8px 0;"><strong>Your earlier note:</strong> ' + escapeHtml(e.michelle_notes) + '</div>';
+  html += '<textarea id="' + noteFieldId + '" placeholder="Your notes (visible to the VA)..." style="width:100%;padding:8px;border:1px solid var(--nbc-border);border-radius:4px;font-family:inherit;font-size:13px;min-height:60px;margin-top:8px;"></textarea>';
+  html += '<div style="display:flex;gap:6px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--nbc-border);flex-wrap:wrap;">';
+  html += '<button onclick="mgrUpdateEsc(' + e.id + ', \'approved\', \'' + noteFieldId + '\')" style="background:var(--nbc-success);color:white;border:none;padding:8px 14px;border-radius:5px;font-weight:600;cursor:pointer;">Approve</button>';
+  html += '<button onclick="mgrUpdateEsc(' + e.id + ', \'awaiting_discussion\', \'' + noteFieldId + '\')" style="background:var(--nbc-warn);color:white;border:none;padding:8px 14px;border-radius:5px;font-weight:600;cursor:pointer;">Awaiting Discussion</button>';
+  html += '<button onclick="mgrUpdateEsc(' + e.id + ', \'declined\', \'' + noteFieldId + '\')" style="background:#6b6b6b;color:white;border:none;padding:8px 14px;border-radius:5px;font-weight:600;cursor:pointer;">Decline</button>';
+  html += '<button onclick="mgrFlagCallback(' + e.id + ', \'' + e.va_initials + '\')" style="margin-left:auto;background:var(--nbc-red);color:white;border:none;padding:8px 14px;border-radius:5px;font-weight:600;cursor:pointer;">Flag as Callback</button>';
+  html += '</div></div>';
+  return html;
+}
+
+async function mgrUpdateEsc(id, status, noteFieldId) {
+  const notes = document.getElementById(noteFieldId).value;
+  const r = await brainCall("PATCH", "/escalation/" + id, { status: status, michelle_notes: notes || null });
+  if (!r) { alert("Update failed"); return; }
+  refreshMgrEscalations();
+}
+
+function timeAgo(iso) {
+  if (!iso) return '\u2014';
+  const secs = (Date.now() - new Date(iso).getTime()) / 1000;
+  if (secs < 60) return Math.floor(secs) + 's ago';
+  if (secs < 3600) return Math.floor(secs/60) + 'm ago';
+  if (secs < 86400) return Math.floor(secs/3600) + 'h ago';
+  return new Date(iso).toLocaleString();
+}
+
+setInterval(() => {
+  if (typeof refreshManagerView === 'function' && !document.getElementById('manager-view').classList.contains('hidden')) {
+    refreshManagerView();
+  }
+}, 30000);
+
+// === STATE ===
+let currentCase = null;
+let dailyLog = JSON.parse(localStorage.getItem('nbc_daily_log') || '[]');
+const today = new Date().toISOString().slice(0, 10);
+dailyLog = dailyLog.filter(c => c.date === today); // only today's
+
+// === VA NAME / INITIALS ===
+function getInitials(fullName) {
+  const words = fullName.split(/\s+/).filter(Boolean);
+  if (words.length === 0) return '';
+  if (words.length === 1) return words[0][0].toLowerCase();
+  // First letter of first word + first letter of last word (e.g. "Rhea Mae Coche" → "rc")
+  return (words[0][0] + words[words.length - 1][0]).toLowerCase();
+}
+function loadVA() {
+  const name = localStorage.getItem('nbc_va_name');
+  if (!name) {
+    document.getElementById('name-modal').classList.add('active');
+  } else {
+    document.getElementById('va-name-display').textContent = name + ' (' + getInitials(name).toUpperCase() + ')';
+    applyRoleUI();
+  }
+}
+function saveVAName() {
+  const name = document.getElementById('va-name-input').value.trim();
+  if (!name) { alert('Please enter your name'); return; }
+  localStorage.setItem('nbc_va_name', name);
+  document.getElementById('name-modal').classList.remove('active');
+  document.getElementById('va-name-display').textContent = name + ' (' + getInitials(name).toUpperCase() + ')';
+  applyRoleUI();
+}
+function resetVA() {
+  if (confirm('Change VA name? Daily log will not be affected.')) {
+    localStorage.removeItem('nbc_va_name');
+    location.reload();
+  }
+}
+
+// === GUIDANCE ===
+function getGuidance() {
+  const sitKey = document.getElementById('situation-type').value;
+  if (!sitKey) { alert('Pick a situation type first'); return; }
+  const sit = POLICIES.situations[sitKey];
+  const studentName = document.getElementById('student-name').value.trim();
+  const studentEmail = document.getElementById('student-email').value.trim();
+  const studentSaid = document.getElementById('student-said').value.trim();
+
+  currentCase = {
+    situation_key: sitKey,
+    situation_label: sit.label,
+    student_name: studentName,
+    student_email: studentEmail,
+    student_said: studentSaid,
+    timestamp: new Date().toISOString(),
+    date: today,
+    initials: getInitials(localStorage.getItem('nbc_va_name') || '').toUpperCase(),
+    pushback: null,
+    pushback_response: null,
+    note: null,
+    resolution: null
+  };
+
+  renderGuidance(sit);
+  renderNoteTemplate(sit, studentSaid);
+  document.getElementById('guidance-panel').classList.remove('hidden');
+  document.getElementById('pushback-panel').classList.remove('hidden');
+  document.getElementById('note-panel').classList.remove('hidden');
+  document.getElementById('guidance-panel').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function renderGuidance(sit) {
+  let html = '';
+  // NBC error detection — runs first so the warning sits at top
+  const studentSaid = (currentCase && currentCase.student_said) || document.getElementById('student-said').value || '';
+  const indicators = detectNBCErrorIndicators(studentSaid);
+  if (indicators.length) {
+    html += renderNBCErrorWarning(indicators);
+    if (currentCase) currentCase.nbc_error_indicators = indicators;
+  }
+  // Policy
+  if (sit.policy) {
+    const p = sit.policy.text || sit.policy.rule || JSON.stringify(sit.policy);
+    html += '<h3>The Policy</h3><div class="policy-box">' + escapeHtml(p);
+    if (sit.policy.source) html += '<div class="source">Source: ' + escapeHtml(sit.policy.source) + '</div>';
+    html += '</div>';
+  } else if (sit.policy_by_timing) {
+    html += '<h3>Policy by Timing</h3>';
+    for (const [k, v] of Object.entries(sit.policy_by_timing)) {
+      html += '<div class="policy-box"><strong>' + escapeHtml(k.replace(/_/g, ' ')) + ':</strong> ' + escapeHtml(v.text || v.rule) + '</div>';
+    }
+  }
+  // Why
+  if (sit.why) {
+    html += '<div class="why-box"><div class="why-label">WHY THIS POLICY EXISTS</div>' + escapeHtml(sit.why) + '</div>';
+  }
+  // Staged response
+  const staged = sit.staged_response || sit.staged_response_under_24;
+  if (staged) {
+    html += '<h3>Staged Response (Speak in this order)</h3><div class="staged-response">';
+    let stepNum = 0;
+    for (const [k, v] of Object.entries(staged)) {
+      stepNum++;
+      const label = k.replace(/^step_\d+_/, '').replace(/_/g, ' ').toUpperCase();
+      if (k.includes('pause') || k.includes('acknowledge_pushback') || k.includes('handle_pushback')) {
+        html += '<div class="step"><div class="step-label">Step ' + stepNum + ': ' + label + '</div><div class="step-pause">' + escapeHtml(v) + '</div></div>';
+      } else {
+        html += '<div class="step"><div class="step-label">Step ' + stepNum + ': ' + label + '</div><div class="step-body">' + escapeHtml(v) + '</div></div>';
+      }
+    }
+    html += '</div>';
+  }
+  // First action (for refund etc.)
+  if (sit.first_action) {
+    html += '<h3>First Action</h3><div class="staged-response"><div class="step"><div class="step-body"><strong>' + escapeHtml(sit.first_action) + '</strong></div></div>';
+    if (sit.first_action_why) html += '<div class="step-pause" style="margin-top: 8px;"><strong>Why:</strong> ' + escapeHtml(sit.first_action_why) + '</div>';
+    html += '</div>';
+  }
+  // Tone
+  if (sit.tone) {
+    html += '<h3>Tone</h3><div class="policy-box">' + escapeHtml(sit.tone) + '</div>';
+  }
+  // Options
+  if (sit.options_to_present_in_order) {
+    html += '<h3>Options to Present (in order)</h3><ol>';
+    sit.options_to_present_in_order.forEach(o => html += '<li>' + escapeHtml(o) + '</li>');
+    html += '</ol>';
+  }
+  // Auto response
+  if (sit.auto_handle_response_only || sit.auto_response_only) {
+    const resp = sit.auto_handle_response_only || sit.auto_response_only;
+    html += '<h3>Auto-Send Email (no commitment)</h3><div class="policy-box">' + escapeHtml(resp) + '</div>';
+  }
+  // Sympathy first
+  if (sit.always_acknowledge_first) {
+    html += '<div class="why-box"><div class="why-label">SAY THIS FIRST</div>' + escapeHtml(sit.always_acknowledge_first) + '</div>';
+  }
+  // Documentation
+  if (sit.documentation_required) {
+    html += '<h3>Documentation Required</h3><ul>';
+    for (const [k, v] of Object.entries(sit.documentation_required)) {
+      html += '<li><strong>' + escapeHtml(k.replace(/_/g, ' ')) + ':</strong> ' + escapeHtml(v) + '</li>';
+    }
+    html += '</ul>';
+  }
+  // Escalation flags
+  if (sit.always_escalate_to_peer) {
+    html += '<div class="why-box" style="border-left-color: var(--nbc-warn);"><div class="why-label" style="color: var(--nbc-warn);">ALWAYS ESCALATE TO PEER TEAM LEAD</div>This situation type is judgment-required. Loop in your peer before responding.</div>';
+  }
+  if (sit.escalate_to_michelle_when) {
+    html += '<h3>Escalate to Michelle if:</h3><ul>';
+    sit.escalate_to_michelle_when.forEach(c => html += '<li>' + escapeHtml(c) + '</li>');
+    html += '</ul>';
+  }
+  document.getElementById('guidance-content').innerHTML = html;
+}
+
+function renderNoteTemplate(sit, studentSaid) {
+  const name = localStorage.getItem('nbc_va_name') || 'VA';
+  const initials = getInitials(name).toLowerCase();
+  const sitShort = (sit.label || '').toLowerCase().split('/')[0].trim().replace(/\s+/g, '');
+
+  // Auto-bullet summary of what student said
+  const sentences = studentSaid.split(/[.!?]+/).map(s => s.trim()).filter(s => s.length > 5);
+  const bullets = sentences.slice(0, 4).map(s => '  - ' + s).join('\n');
+
+  const time = new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'});
+  const studentName = document.getElementById('student-name').value || '[student name]';
+
+  const template = `${initials}-${sitShort}: ${studentName} - ${sit.label}
+
+REASON
+  Source: [call / email / text]
+  Time: ${time}
+  Student message (bullets):
+${bullets || '  - [summarize key points from what student said]'}
+
+CLASS DETAILS
+  [Auto-pulled from Enrollware once integration is live]
+  Student: ${studentName}
+  Current class: [type, date, time, instructor]
+  Payment: [amount, date paid, method]
+  Previous notes: [any prior interactions]
+
+HANDLING
+  Policy stated: [yes/no - which policy from T&Cs]
+  Pause held: [yes/no]
+  Pushback handled: [what they said / how you responded]
+  Grace offered: [yes/no - which one]
+  Payment taken: [yes/no - amount, CC last 4]
+  Confirmation email sent: [yes/no]
+
+RESOLUTION
+  Final outcome: [accepted/declined/transferred/escalated]
+  New class details: [if transferred or rebooked]
+  Next steps: [follow-up needed?]
+  Escalated to: [peer / Michelle / N/A]`;
+
+  document.getElementById('note-text').value = template;
+}
+
+// === PUSHBACK ===
+function getPushback() {
+  const rawText = document.getElementById('pushback-text').value.trim();
+  const text = rawText.toLowerCase();
+  if (!text) { alert('Type what the student said first'); return; }
+  const pbIndicators = detectNBCErrorIndicators(rawText);
+  const pbWarning = pbIndicators.length ? renderNBCErrorWarning(pbIndicators) : '';
+  if (pbIndicators.length && currentCase) currentCase.nbc_error_indicators = (currentCase.nbc_error_indicators || []).concat(pbIndicators);
+  let bestMatch = null; let bestScore = 0;
+  for (const [k, v] of Object.entries(POLICIES.common_pushback)) {
+    const trigger = v.trigger.toLowerCase();
+    const triggerWords = trigger.split(/\s+/).filter(w => w.length > 3);
+    const score = triggerWords.filter(w => text.includes(w)).length;
+    if (score > bestScore) { bestScore = score; bestMatch = v; }
+  }
+  const out = document.getElementById('pushback-result');
+  if (bestMatch && bestScore >= 1) {
+    out.innerHTML = pbWarning + '<div class="pushback-result"><strong>Try saying:</strong><br>' + escapeHtml(bestMatch.response) + (bestMatch.action ? '<br><br><strong>Action:</strong> ' + escapeHtml(bestMatch.action) : '') + '</div>';
+    if (currentCase) { currentCase.pushback = document.getElementById('pushback-text').value; currentCase.pushback_response = bestMatch.response; }
+  } else {
+    out.innerHTML = pbWarning + '<div class="pushback-result" style="background: #fff0f0; border-left-color: var(--nbc-red);"><strong>No standard pushback pattern matched.</strong><br>This is a judgment call. Recommend: place student on brief hold, escalate to peer Team Lead for second opinion before responding.</div>';
+  }
+}
+
+// === ESCALATION ===
+function showEscalationPeer() {
+  if (!currentCase) { alert('Get decision guidance first'); return; }
+  if (!confirm("Transfer this call to the shift team lead?\n\nThis is for when the CALLER asks for a supervisor/manager — that's the only trigger.\n\nNeither of you has more authority. The other Team Lead picks up the call as the 'shift team lead' and handles from there.\n\nYou remain accountable for everything you did up to this point. They're accountable for what they do after the handoff.\n\nIf you just want to ask 'have you seen this before?' — use Teams chat, not this button.\n\nContinue?")) return;
+  const name = localStorage.getItem('nbc_va_name');
+  const txt = `WARM TRANSFER TO SHIFT TEAM LEAD
+From: ${name}
+Time: ${new Date().toLocaleString()}
+Caller: ${currentCase.student_name} (${currentCase.student_email})
+Situation: ${currentCase.situation_label}
+
+WHY THE CALLER WANTS A SUPERVISOR:
+[fill in their stated reason — quote what they said]
+
+WHAT I'VE ALREADY DONE ON THE CALL:
+[fill in: policy I stated, any options I offered, how they responded]
+
+WHAT THE CALLER IS CURRENTLY ASKING FOR:
+[fill in: refund, free rebook, override, etc.]
+
+NOTES FOR YOU PICKING UP:
+[fill in: tone, anything they said that's relevant, your read on the situation]
+
+The caller is on hold / expects callback. Pick up as the shift team lead.`;
+  document.getElementById('escalation-text').textContent = txt;
+  document.getElementById('escalation-output').classList.remove('hidden');
+  currentCase.escalated_peer = true;
+  currentCase.escalated_at = new Date().toISOString();
+  // Submit to brain (non-blocking, falls back to clipboard if offline)
+  brainCall("POST", "/escalation", {
+    va_initials: currentCase.initials || "??",
+    target: "peer",
+    student_email: currentCase.student_email,
+    student_name: currentCase.student_name,
+    situation_key: currentCase.situation_key,
+    situation_label: currentCase.situation_label,
+    what_student_said: currentCase.student_said,
+  }).then(r => {
+    if (r && r.id) {
+      const note = document.createElement("div");
+      note.style = "margin-top: 8px; font-size: 12px; color: var(--nbc-success);";
+      note.textContent = "✓ Warm transfer #" + r.id + " sent — shift team lead will see the context in their app and pick up the call.";
+      document.getElementById('escalation-output').appendChild(note);
+    }
+  });
+}
+
+async function showEscalationMichelle() {
+  if (!currentCase) { alert('Get decision guidance first'); return; }
+  if (!confirm("Escalate to Michelle?\n\nBefore submitting, confirm you have:\n  (1) investigated the case fully (instructor contact, facility contact, prior notes)\n  (2) documented what you already offered the student\n  (3) drafted YOUR recommended resolution\n\nMichelle is the FINAL APPROVAL \u2014 not the decision-maker. If any of the above is missing, do the work first.\n\nContinue?")) return;
+  const name = localStorage.getItem('nbc_va_name');
+  const indicators = (currentCase.nbc_error_indicators || []).join(', ');
+  const triggerLine = indicators
+    ? "NBC error / facility issue (auto-detected indicators: " + indicators + ")"
+    : "[ ] Chargeback   [ ] Attorney   [ ] ADA   [ ] NBC error   [ ] Outside-policy decision";
+  const txt = "ESCALATION TO MICHELLE\nFrom: " + name + "\nTime: " + new Date().toLocaleString() +
+    "\nStudent: " + (currentCase.student_name || '') + " (" + (currentCase.student_email || '') + ")" +
+    "\nSituation: " + (currentCase.situation_label || '') +
+    "\n\nESCALATION TRIGGER:\n" + triggerLine +
+    "\n\nWHAT HAPPENED:\n" + (currentCase.student_said || '') +
+    "\n\nWHAT I OFFERED THE STUDENT:\n[Required \u2014 exactly what you said/offered before deciding to escalate]" +
+    "\n\nWHAT I'VE INVESTIGATED:\n- Instructor contacted: [yes / no / N/A]\n- Facility / location contacted: [yes / no / N/A]\n- Prior notes / case history: [yes / no \u2014 summary]\n- Documentation reviewed: [yes / no / N/A]" +
+    "\n\nMY RECOMMENDED RESOLUTION:\n[Required \u2014 what YOU think we should do, with reasoning]" +
+    "\n\nDECISION I NEED FROM YOU:\n[ ] Approve my recommended resolution\n[ ] Discuss before deciding\n[ ] Other: ___";
+  document.getElementById('escalation-text').textContent = txt;
+  document.getElementById('escalation-output').classList.remove('hidden');
+  currentCase.escalated_michelle = true;
+  currentCase.escalated_at = new Date().toISOString();
+  const result = await brainCall("POST", "/escalation", {
+    va_initials: currentCase.initials || "??",
+    target: "michelle",
+    student_email: currentCase.student_email,
+    student_name: currentCase.student_name,
+    situation_key: currentCase.situation_key,
+    situation_label: currentCase.situation_label,
+    what_student_said: currentCase.student_said,
+  });
+  if (result && result.id) {
+    const note = document.createElement("div");
+    note.style = "margin-top: 8px; font-size: 12px; color: var(--nbc-success);";
+    note.textContent = "\u2713 Escalation #" + result.id + " submitted to Michelle's dashboard \u2014 she'll see it immediately.";
+    document.getElementById('escalation-output').appendChild(note);
+  }
+}
+
+
+
+function copyEscalation() {
+  const txt = document.getElementById('escalation-text').textContent;
+  navigator.clipboard.writeText(txt).then(() => {
+    const btn = event.target;
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy to Clipboard', 2000);
+  });
+}
+
+// === SAVE CASE ===
+async function saveCase() {
+  if (!currentCase) { alert('Get decision guidance first'); return; }
+  currentCase.note = document.getElementById('note-text').value;
+  const resolutionMatch = currentCase.note.match(/Final outcome:\s*([^\n\[]+)/i);
+  currentCase.resolution = resolutionMatch ? resolutionMatch[1].trim() : '[see note]';
+  dailyLog.push(currentCase);
+  localStorage.setItem('nbc_daily_log', JSON.stringify(dailyLog));
+
+  const status = document.getElementById('save-status');
+  status.textContent = '✓ Saved to your local log. Download the JSON at end of day.';
+  status.classList.add('ok');
+  renderLog();
+  renderKPIs();
+  setTimeout(() => {
+    if (confirm('Saved. Clear form for next case?')) clearForm();
+  }, 500);
+}
+
+
+function clearForm() {
+  ['situation-type','student-name','student-email','student-said','pushback-text','note-text'].forEach(id => document.getElementById(id).value = '');
+  ['guidance-panel','pushback-panel','note-panel','escalation-output'].forEach(id => document.getElementById(id).classList.add('hidden'));
+  document.getElementById('pushback-result').innerHTML = '';
+  document.getElementById('save-status').textContent = '';
+  document.getElementById('save-status').classList.remove('ok');
+  currentCase = null;
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// === LOG ===
+function renderLog() {
+  const summary = document.getElementById('log-summary');
+  const table = document.getElementById('log-table');
+  if (dailyLog.length === 0) {
+    summary.textContent = 'No cases logged yet today.';
+    table.classList.add('hidden');
+    return;
+  }
+  summary.textContent = dailyLog.length + ' case' + (dailyLog.length > 1 ? 's' : '') + ' logged today.';
+  table.classList.remove('hidden');
+  document.getElementById('log-body').innerHTML = dailyLog.map(c => {
+    const t = new Date(c.timestamp).toLocaleTimeString('en-US', {hour:'2-digit', minute:'2-digit'});
+    return '<tr><td>' + t + '</td><td>' + escapeHtml(c.student_name || '-') + '</td><td>' + escapeHtml(c.situation_label) + '</td><td>' + escapeHtml(c.resolution || '-') + '</td></tr>';
+  }).join('');
+}
+
+function downloadLog() {
+  if (dailyLog.length === 0) { alert('Nothing to download yet.'); return; }
+  const name = localStorage.getItem('nbc_va_name') || 'VA';
+  const blob = new Blob([JSON.stringify(dailyLog, null, 2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'nbc_daily_log_' + getInitials(name).toUpperCase() + '_' + today + '.json';
+  a.click();
+}
+
+function clearLog() {
+  if (!confirm('Clear today\'s log? Download it first if you need to keep it.')) return;
+  dailyLog = [];
+  localStorage.setItem('nbc_daily_log', JSON.stringify(dailyLog));
+  renderLog();
+}
+
+// === SIDEBAR REFERENCE ===
+function renderReference() {
+  let html = '';
+  for (const [k, sit] of Object.entries(POLICIES.situations)) {
+    let body = '';
+    if (sit.policy && sit.policy.text) body += sit.policy.text;
+    else if (sit.policy_by_timing) {
+      body = Object.entries(sit.policy_by_timing).map(([t, v]) => '<strong>' + t.replace(/_/g, ' ') + ':</strong> ' + escapeHtml(v.text || v.rule)).join('<br>');
+    } else if (sit.policy && sit.policy.rule) body = sit.policy.rule;
+    if (sit.first_action) body += '<br><br><strong>First action:</strong> ' + escapeHtml(sit.first_action);
+    html += '<details><summary>' + escapeHtml(sit.label) + '</summary><div class="ref-body">' + body + '</div></details>';
+  }
+  // Cost structure
+  html += '<details><summary>Class Cost Structure</summary><div class="ref-body">';
+  for (const [k, v] of Object.entries(POLICIES.cost_structure)) {
+    if (k === 'explanation') html += '<br><em>' + escapeHtml(v) + '</em>';
+    else if (typeof v === 'number') html += k.replace(/_/g, ' ') + ': $' + v + '<br>';
+  }
+  html += '</div></details>';
+  // Escalation protocol
+  html += '<details><summary>Escalation Protocol</summary><div class="ref-body">';
+  html += '<strong>To Peer Team Lead:</strong><br>' + POLICIES.escalation_protocol.to_peer_team_lead.when.map(w => '• ' + w).join('<br>');
+  html += '<br><br><strong>To Michelle:</strong><br>' + POLICIES.escalation_protocol.to_michelle.when.map(w => '• ' + w).join('<br>');
+  html += '</div></details>';
+  document.getElementById('ref-content').innerHTML = html;
+}
+
+// === UTIL ===
+function escapeHtml(s) {
+  if (s == null) return '';
+  return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m]);
+}
+
+// === INIT ===
+loadVA();
+renderLog();
+renderReference();
+checkBrain();
+// Re-check brain every 60s
+setInterval(checkBrain, 60000);
+</script>
+
+</body>
+</html>
